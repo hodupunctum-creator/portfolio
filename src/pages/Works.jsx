@@ -46,7 +46,7 @@ export default function Works() {
 
       <div className="split">
         <aside className="split-aside">
-          <ol className="work-index">
+          <ol className="work-index" style={{ '--rows': Math.ceil(works.length / 2) }}>
             {works.map((work, i) => (
               <li key={work.id}>
                 <button className={i === active ? 'is-active' : ''} onClick={() => jumpTo(i)}>
