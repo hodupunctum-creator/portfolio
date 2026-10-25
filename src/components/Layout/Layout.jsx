@@ -27,14 +27,6 @@ export default function Layout() {
         {site.contactLabel}:
         <br />
         <a href={`mailto:${site.email}`}>{site.email}</a>
-        <br />
-        {site.sns.url ? (
-          <a href={site.sns.url} target="_blank" rel="noreferrer">
-            {site.sns.label}
-          </a>
-        ) : (
-          site.sns.label
-        )}
       </address>
       <span className="frame-year">{new Date().getFullYear()}.</span>
     </div>

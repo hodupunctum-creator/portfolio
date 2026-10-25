@@ -20,8 +20,6 @@ export default function About() {
             <dd>
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </dd>
-            <dt>SNS</dt>
-            <dd>{site.sns.label}</dd>
           </dl>
         </div>
       </div>
