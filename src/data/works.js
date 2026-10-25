@@ -72,21 +72,6 @@ export const works = [
     images: []
   },
   {
-    id: 'otek-modvi-detail-page',
-    title: '오텍 냉장 상세페이지',
-    tag: '업무',
-    org: '내일날씨',
-    period: '',
-    summary: '오텍 냉장(모드비) 상세페이지 제작',
-    description: '오텍 냉장(모드비) 상세페이지 제작\n- 냉장고, 냉동고, 김치 냉장고, 에어프라이어, 와인셀러, 전자레인지, 이벤트 페이지 등등',
-    role: ['기획, 디자인 검수'],
-    outcome: [],
-    links: [],
-    cover: '',
-    color: '#3d3a40',
-    images: []
-  },
-  {
     id: 'gwanak-planner-diary',
     title: '초보문화기획자의 근무일지 : 도와줘요! 기획요정',
     tag: '업무',
@@ -106,7 +91,7 @@ export const works = [
     title: '<큐연> 1호',
     tag: '잡지 공저',
     org: '큐연',
-    period: '',
+    period: '2023.07',
     summary: '비정기 간행물 잡지 <큐연> 1호에 단편소설 게재',
     description: '비정기 간행물 잡지 <큐연> 1호에 단편소설 게재',
     role: ['단편소설 게재'],
@@ -114,6 +99,21 @@ export const works = [
     links: [],
     cover: '',
     color: '#b90020',
+    images: []
+  },
+  {
+    id: 'yeonhui-residency-2023',
+    title: '2023 연희문학창작촌 입주 작가',
+    tag: '입주 작가',
+    org: '연희문학창작촌',
+    period: '2023.04 ~ 05',
+    summary: '2023 연희문학창작촌 입주 작가 공모 선정',
+    description: '2023 연희문학창작촌 입주 작가 공모 선정',
+    role: ['입주 작가'],
+    outcome: [],
+    links: [],
+    cover: '',
+    color: '#3d3a40',
     images: []
   },
   {
@@ -129,6 +129,21 @@ export const works = [
     links: [],
     cover: '',
     color: '#2b2730',
+    images: []
+  },
+  {
+    id: 'yeoreumnun-south-wind-cover',
+    title: '<남쪽 바람이 불면> 커버 사진',
+    tag: '여름눈',
+    org: '개인',
+    period: '2022.10.17',
+    summary: '밴드 여름눈 <남쪽 바람이 불면> 커버 사진 촬영',
+    description: '밴드 여름눈 <남쪽 바람이 불면> 커버 사진 촬영',
+    role: ['커버 사진 촬영'],
+    outcome: [],
+    links: [],
+    cover: '',
+    color: '#a3362f',
     images: []
   },
   {
@@ -181,14 +196,29 @@ export const works = [
     title: '500photographs’ 프로젝트',
     tag: '사진전',
     org: '291 포토그랩스',
-    period: '',
-    summary: '',
-    description: '',
+    period: '2021.06 ~ 진행중',
+    summary: '291포토그랩스 500photographs’ 프로젝트에 사진 작가로 참여 중',
+    description: '291포토그랩스 500photographs’ 프로젝트에 사진 작가로 참여 중',
     role: ['참여 작가'],
     outcome: [],
     links: [],
     cover: '',
     color: '#a3362f',
+    images: []
+  },
+  {
+    id: 'buyeo-art-fair-staff',
+    title: '부여 아트페어 현장 운영 스태프',
+    tag: '현장 운영',
+    org: '부여 아트페어',
+    period: '2021.09.03 ~ 09.12',
+    summary: '부여 아트페어 현장 운영 스태프',
+    description: '부여 아트페어 현장 운영 스태프',
+    role: ['현장 운영 스태프'],
+    outcome: [],
+    links: [],
+    cover: '',
+    color: '#5c1420',
     images: []
   },
   {
@@ -249,6 +279,21 @@ export const works = [
     links: [],
     cover: '',
     color: '#8a1a2b',
+    images: []
+  },
+  {
+    id: 'kookmin-publishing-intern',
+    title: '국민출판사 인턴',
+    tag: '인턴',
+    org: '국민출판사',
+    period: '2015.12 ~ 2016.01',
+    summary: '국민출판사 인턴 활동',
+    description: '국민출판사 인턴 활동',
+    role: ['인턴'],
+    outcome: [],
+    links: [],
+    cover: '',
+    color: '#2b2730',
     images: []
   }
 ];
