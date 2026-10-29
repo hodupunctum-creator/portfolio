@@ -50,7 +50,7 @@ export const works = [
   },
   {
     id: 'yeonhui-residency-2023',
-    title: '2023 연희문학창작촌 입주 작가',
+    title: '2023 연희문학창작촌 청년예비작가',
     tag: '입주 작가',
     category: 'creative',
     org: '연희문학창작촌',
