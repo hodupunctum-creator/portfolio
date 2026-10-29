@@ -60,9 +60,11 @@ export const works = [
     role: ['입주 작가'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/yeonhui-residency.jpg',
+    coverRatio: '908 / 1449',
+    coverMaxWidth: '440px',
     color: '#3d3a40',
-    images: []
+    images: ['/works/yeonhui-residency-2.jpg', '/works/yeonhui-residency-3.jpg']
   },
   {
     id: 'yeoreumnun-farewell-footprints',
