@@ -33,6 +33,23 @@ export const works = [
     images: ['/works/winter-island-reading-2.jpg', '/works/winter-island-reading-3.jpg']
   },
   {
+    id: 'dajaedapil-1',
+    title: '다재다필 1기 작품선',
+    tag: '작품집 공저',
+    category: 'creative',
+    org: '창작집단 다재다필',
+    period: '2024.10 ~ 2025.01',
+    summary: '창작집단 다재다필 1기로 활동하며 단편소설을 쓰고 1기 작품선 공동 발간',
+    description: '창작집단 다재다필 1기로 활동하며 단편소설을 썼고, 1기 작품선을 함께 펴냈다.\n작품선에는 <참새와 정숙의 밤>, <레플리카>, <흡혈귀 해방 운동>, <운명정대>가 실렸다.',
+    role: ['단편소설 집필', '작품선 공동 발간'],
+    outcome: [],
+    links: [],
+    cover: '/works/dajaedapil-1.jpg',
+    coverRatio: '1170 / 878',
+    color: '#6f7d74',
+    images: ['/works/dajaedapil-1-2.jpg']
+  },
+  {
     id: 'qyeon-1',
     title: '<큐연> 1호',
     tag: '잡지 공저',
