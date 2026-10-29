@@ -93,7 +93,7 @@ export const works = [
       credit: ''
     },
     cover: '/works/yeoreumnun-farewell-footprints.jpg',
-    coverRatio: '1 / 1',
+    coverRatio: '1170 / 1806',
     color: '#2b2730',
     images: []
   },
