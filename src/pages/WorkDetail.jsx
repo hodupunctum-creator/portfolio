@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { works } from '../data/works';
+import { orderedWorks as works } from '../data/works';
 import { WorkCover, pad } from './Works';
 import NotFound from './NotFound';
 
@@ -14,6 +14,7 @@ export default function WorkDetail() {
   const prev = works[(index - 1 + works.length) % works.length];
   const next = works[(index + 1) % works.length];
   const facts = [
+    ['구분', work.categoryLabel],
     ['분류', work.tag],
     ['소속', work.org],
     ['기간', work.period],
@@ -26,8 +27,9 @@ export default function WorkDetail() {
       <header className="page-head">
         <h1 className="display display--title">{work.title}</h1>
         <div className="page-count display display--title">
-          <span>{pad(index + 1)}</span>
-          <span>/{pad(works.length)}</span>
+          <span className="page-count-label">{work.categoryLabel}</span>
+          <span>{pad(work.number)}</span>
+          <span>/{pad(work.categoryTotal)}</span>
         </div>
       </header>
 
@@ -57,13 +59,15 @@ export default function WorkDetail() {
               </>
             )}
           </dl>
-          <div className="prose">
-            {work.description.split('\n').map((para, i) => (
-              <p key={i} className={i === 0 ? 'indent' : undefined}>
-                {para}
-              </p>
-            ))}
-          </div>
+          <section className="info">
+            <h2 className="info-title">Info</h2>
+            <h3 className="info-sub">Overview</h3>
+            <div className="prose">
+              {work.description.split('\n').map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          </section>
         </aside>
 
         <div className="split-main">
