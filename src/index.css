@@ -295,6 +295,11 @@ img {
   transition: filter 0.4s;
 }
 
+.work-image {
+  width: 100%;
+  height: auto;
+}
+
 .work-cover--blank {
   display: flex;
   align-items: flex-end;

@@ -12,7 +12,11 @@ export function WorkCover({ work }) {
       src={work.cover}
       alt={work.title}
       loading="lazy"
-      style={work.coverRatio ? { aspectRatio: work.coverRatio } : undefined}
+      style={{
+        aspectRatio: work.coverRatio,
+        maxWidth: work.coverMaxWidth,
+        marginInline: work.coverMaxWidth ? 'auto' : undefined
+      }}
     />
   ) : (
     <div className="work-cover work-cover--blank" style={{ backgroundColor: work.color }} aria-hidden="true">

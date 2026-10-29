@@ -10,6 +10,7 @@
 // - cover: 이미지 경로. public/works/ 폴더에 넣고 '/works/파일명.jpg' 형태로 적으세요.
 //          비워두면 color 값으로 채운 표지가 표시됩니다.
 // - coverRatio: (선택) 표지 비율. 기본은 16 / 9, 정사각형이면 '1 / 1'
+// - coverMaxWidth: (선택) 세로로 긴 표지처럼 너무 커 보일 때 최대 너비 (예: '440px'). 가운데 정렬됩니다.
 // - images: 상세 페이지에 보여줄 추가 이미지 경로 목록
 // - excerpt: (선택) 상세 페이지에 인용할 글 전문 { title, text: [줄 목록], credit }
 
@@ -26,9 +27,10 @@ export const works = [
     role: ['낭독'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/winter-island-reading.jpg',
+    coverRatio: '1170 / 627',
     color: '#3d3a40',
-    images: []
+    images: ['/works/winter-island-reading-2.jpg']
   },
   {
     id: 'qyeon-1',
@@ -94,6 +96,7 @@ export const works = [
     },
     cover: '/works/yeoreumnun-farewell-footprints.jpg',
     coverRatio: '1170 / 1806',
+    coverMaxWidth: '440px',
     color: '#2b2730',
     images: []
   },
