@@ -30,7 +30,7 @@ export const works = [
     cover: '/works/winter-island-reading.jpg',
     coverRatio: '1170 / 627',
     color: '#3d3a40',
-    images: ['/works/winter-island-reading-2.jpg']
+    images: ['/works/winter-island-reading-2.jpg', '/works/winter-island-reading-3.jpg']
   },
   {
     id: 'qyeon-1',
