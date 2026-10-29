@@ -12,6 +12,7 @@
 // - coverRatio: (선택) 표지 비율. 기본은 16 / 9, 정사각형이면 '1 / 1'
 // - coverMaxWidth: (선택) 세로로 긴 표지처럼 너무 커 보일 때 최대 너비 (예: '440px'). 가운데 정렬됩니다.
 // - images: 상세 페이지에 보여줄 추가 이미지 경로 목록
+//          세로로 긴 사진을 작게 보이려면 { src: '/works/파일명.jpg', maxWidth: '440px' } 형태로 적으세요.
 // - excerpt: (선택) 상세 페이지에 인용할 글 전문 { title, text: [줄 목록], credit }
 
 export const works = [
@@ -47,7 +48,7 @@ export const works = [
     cover: '/works/dajaedapil-1.jpg',
     coverRatio: '1170 / 878',
     color: '#6f7d74',
-    images: ['/works/dajaedapil-1-2.jpg']
+    images: [{ src: '/works/dajaedapil-1-2.jpg', maxWidth: '440px' }]
   },
   {
     id: 'qyeon-1',

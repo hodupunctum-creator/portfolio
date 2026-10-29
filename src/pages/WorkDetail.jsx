@@ -83,9 +83,19 @@ export default function WorkDetail() {
 
         <div className="split-main">
           <WorkCover work={work} />
-          {work.images.map(src => (
-            <img key={src} className="work-image" src={src} alt="" loading="lazy" />
-          ))}
+          {work.images.map(image => {
+            const { src, maxWidth } = typeof image === 'string' ? { src: image } : image;
+            return (
+              <img
+                key={src}
+                className="work-image"
+                src={src}
+                alt=""
+                loading="lazy"
+                style={maxWidth ? { maxWidth, marginInline: 'auto' } : undefined}
+              />
+            );
+          })}
           <nav className="pager" aria-label="다른 작품">
             <Link to={`/works/${prev.id}`}>← {prev.title}</Link>
             <Link to={`/works/${next.id}`}>{next.title} →</Link>
