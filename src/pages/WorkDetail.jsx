@@ -67,6 +67,17 @@ export default function WorkDetail() {
                 <p key={i}>{para}</p>
               ))}
             </div>
+            {work.excerpt && (
+              <figure className="excerpt">
+                <h3 className="info-sub">{work.excerpt.title}</h3>
+                <blockquote>
+                  {work.excerpt.text.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </blockquote>
+                {work.excerpt.credit && <figcaption>– {work.excerpt.credit}</figcaption>}
+              </figure>
+            )}
           </section>
         </aside>
 

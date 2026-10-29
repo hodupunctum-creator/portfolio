@@ -366,6 +366,29 @@ img {
   text-underline-offset: 6px;
 }
 
+.excerpt {
+  margin: 40px 0 0;
+}
+
+.excerpt blockquote {
+  margin: 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+  font-size: var(--text-body);
+  line-height: 1.8;
+}
+
+.excerpt blockquote p {
+  margin: 0;
+}
+
+.excerpt figcaption {
+  margin-top: 16px;
+  padding-left: 18px;
+  font-size: var(--text-s);
+  color: var(--muted);
+}
+
 .info-sub {
   margin: 0 0 10px;
   font-size: 19px;

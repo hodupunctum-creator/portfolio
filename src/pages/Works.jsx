@@ -7,7 +7,13 @@ export const pad = n => String(n).padStart(2, '0');
 
 export function WorkCover({ work }) {
   return work.cover ? (
-    <img className="work-cover" src={work.cover} alt={work.title} loading="lazy" />
+    <img
+      className="work-cover"
+      src={work.cover}
+      alt={work.title}
+      loading="lazy"
+      style={work.coverRatio ? { aspectRatio: work.coverRatio } : undefined}
+    />
   ) : (
     <div className="work-cover work-cover--blank" style={{ backgroundColor: work.color }} aria-hidden="true">
       {work.tag}
