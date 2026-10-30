@@ -17,6 +17,8 @@ const keepTitlesTogether = text =>
     )
   );
 
+const EXCERPT_MARK = '[[excerpt]]';
+
 export default function WorkDetail() {
   const { id } = useParams();
   const index = works.findIndex(work => work.id === id);
@@ -33,6 +35,21 @@ export default function WorkDetail() {
     ['역할', work.role],
     ['성과', work.outcome]
   ].filter(([, value]) => value.length > 0);
+
+  // 소개글은 빈 줄로 문단을 나눕니다. '---'는 구분선, '[[excerpt]]'는 인용 전문(excerpt)이 들어갈 자리입니다.
+  const blocks = work.description.split(/\n{2,}/);
+  const excerptInline = blocks.some(para => para.trim() === EXCERPT_MARK);
+  const excerpt = work.excerpt && (
+    <figure className="excerpt">
+      <h3 className="info-sub">{work.excerpt.title}</h3>
+      <blockquote>
+        {work.excerpt.text.map((line, i) => (
+          <p key={i}>{line}</p>
+        ))}
+      </blockquote>
+      {work.excerpt.credit && <figcaption>– {work.excerpt.credit}</figcaption>}
+    </figure>
+  );
 
   return (
     <main>
@@ -75,32 +92,22 @@ export default function WorkDetail() {
             <h2 className="info-title">Info</h2>
             <h3 className="info-sub">Overview</h3>
             <div className="prose">
-              {work.description.split(/\n{2,}/).map((para, i) =>
-                para.trim() === '---' ? (
-                  <hr key={i} className="prose-rule" />
-                ) : (
-                <p key={i}>
-                  {para.split('\n').map((line, j) => (
-                    <Fragment key={j}>
-                      {j > 0 && <br />}
-                      {keepTitlesTogether(line)}
-                    </Fragment>
-                  ))}
-                </p>
-                )
-              )}
+              {blocks.map((para, i) => {
+                if (para.trim() === '---') return <hr key={i} className="prose-rule" />;
+                if (para.trim() === EXCERPT_MARK) return <Fragment key={i}>{excerpt}</Fragment>;
+                return (
+                  <p key={i}>
+                    {para.split('\n').map((line, j) => (
+                      <Fragment key={j}>
+                        {j > 0 && <br />}
+                        {keepTitlesTogether(line)}
+                      </Fragment>
+                    ))}
+                  </p>
+                );
+              })}
             </div>
-            {work.excerpt && (
-              <figure className="excerpt">
-                <h3 className="info-sub">{work.excerpt.title}</h3>
-                <blockquote>
-                  {work.excerpt.text.map((line, i) => (
-                    <p key={i}>{line}</p>
-                  ))}
-                </blockquote>
-                {work.excerpt.credit && <figcaption>– {work.excerpt.credit}</figcaption>}
-              </figure>
-            )}
+            {!excerptInline && excerpt}
           </section>
         </aside>
 

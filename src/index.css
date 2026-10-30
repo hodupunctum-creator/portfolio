@@ -420,6 +420,11 @@ img {
   margin: 0 0 1.3em;
 }
 
+/* 본문 중간에 들어간 글 전문: 앞뒤 문단과 같은 간격으로 */
+.prose .excerpt {
+  margin: 0.4em 0 1.7em;
+}
+
 .prose-rule {
   margin: 0.4em 0 1.7em;
   border: 0;
