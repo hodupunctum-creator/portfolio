@@ -419,6 +419,12 @@ img {
   margin: 0 0 1.3em;
 }
 
+.prose-rule {
+  margin: 0.4em 0 1.7em;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
 .pager {
   display: flex;
   justify-content: space-between;

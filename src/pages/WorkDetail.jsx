@@ -75,7 +75,10 @@ export default function WorkDetail() {
             <h2 className="info-title">Info</h2>
             <h3 className="info-sub">Overview</h3>
             <div className="prose">
-              {work.description.split(/\n{2,}/).map((para, i) => (
+              {work.description.split(/\n{2,}/).map((para, i) =>
+                para.trim() === '---' ? (
+                  <hr key={i} className="prose-rule" />
+                ) : (
                 <p key={i}>
                   {para.split('\n').map((line, j) => (
                     <Fragment key={j}>
@@ -84,7 +87,8 @@ export default function WorkDetail() {
                     </Fragment>
                   ))}
                 </p>
-              ))}
+                )
+              )}
             </div>
             {work.excerpt && (
               <figure className="excerpt">
