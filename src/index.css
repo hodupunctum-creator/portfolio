@@ -190,7 +190,6 @@ img {
   padding: 180px var(--gutter) 160px;
   /* 창이 낮아 목록이 화면보다 길면 목록 자체가 스크롤됩니다 */
   overflow-y: auto;
-  overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--line) transparent;
 }
