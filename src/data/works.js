@@ -129,9 +129,11 @@ export const works = [
     role: ['총 7명이 함께 진행함 (기획자 1명, 참여자 5명, 기획, 편집 및 참여자 1명)', '강의 수강생인 참여자로 참여'],
     outcome: ['A4 3장 분량의 영화 비평 1편을 게시함'],
     links: [],
-    cover: '',
+    cover: '/works/female-detective.jpg',
+    coverRatio: '1170 / 1560',
+    coverMaxWidth: '440px',
     color: '#2b2730',
-    images: []
+    images: [{ src: '/works/female-detective-2.jpg', maxWidth: '560px' }]
   },
   {
     id: 'the-meolli-ghost',
