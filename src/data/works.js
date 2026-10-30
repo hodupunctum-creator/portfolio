@@ -96,9 +96,10 @@ export const works = [
     role: ['구성, 기획, 편집, 디자인 등 제작 전반'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/endless-crumbs.jpg',
+    coverRatio: '1170 / 926',
     color: '#8a1a2b',
-    images: []
+    images: ['/works/endless-crumbs-2.jpg', '/works/endless-crumbs-3.jpg', '/works/endless-crumbs-4.jpg', '/works/endless-crumbs-5.jpg']
   },
   {
     id: 'gwanak-planner-diary',
