@@ -179,6 +179,27 @@ img {
   background: radial-gradient(circle at 40% 60%, #6fbf8c 0%, #8ccda3 40%, rgba(170, 220, 186, 0.55) 58%, rgba(196, 230, 206, 0) 71%);
 }
 
+/* 노랑: 파랑·빨강과 겹치면 초록·주홍으로 섞입니다 */
+.orb--4 {
+  --hot: 60% 40%;
+  width: min(25vmin, 270px);
+  background: radial-gradient(circle at 60% 40%, #f2bd1d 0%, #f6cc45 36%, rgba(249, 220, 118, 0.6) 54%, rgba(251, 232, 166, 0) 71%);
+}
+
+/* 연보라(페리윙클) */
+.orb--5 {
+  --hot: 35% 65%;
+  width: min(12vmin, 130px);
+  background: radial-gradient(circle at 35% 65%, #8c84dc 0%, #a59de6 40%, rgba(188, 182, 240, 0.5) 58%, rgba(210, 206, 246, 0) 71%);
+}
+
+/* 작은 빨강 점 */
+.orb--6 {
+  --hot: 42% 58%;
+  width: min(6.5vmin, 70px);
+  background: radial-gradient(circle at 42% 58%, #e5283f 0%, #ec4a5c 40%, rgba(240, 112, 128, 0.5) 58%, rgba(246, 168, 178, 0) 71%);
+}
+
 /* 원 위의 희미한 점 질감. 원과 함께 구르고, 원의 번진 가장자리를 따라 함께 옅어집니다 */
 .orb-grain {
   position: absolute;
