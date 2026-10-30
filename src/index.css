@@ -163,7 +163,7 @@ img {
 /* 밝은 빨강·하늘빛 파랑·연한 초록. 밝은 점을 한쪽으로 치우쳐 두어 한쪽 가장자리는 또렷하고 반대쪽은 번지게 합니다 */
 .orb--1 {
   --hot: 32% 68%;
-  width: min(66vmin, 700px);
+  width: min(59vmin, 630px);
   background: radial-gradient(circle at 32% 68%, #e5283f 0%, #ec4a5c 30%, rgba(240, 112, 128, 0.72) 47%, rgba(246, 168, 178, 0.3) 60%, rgba(248, 190, 198, 0) 71%);
 }
 
