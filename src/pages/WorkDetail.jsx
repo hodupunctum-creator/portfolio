@@ -63,8 +63,15 @@ export default function WorkDetail() {
             <h2 className="info-title">Info</h2>
             <h3 className="info-sub">Overview</h3>
             <div className="prose">
-              {work.description.split('\n').map((para, i) => (
-                <p key={i}>{para}</p>
+              {work.description.split(/\n{2,}/).map((para, i) => (
+                <p key={i}>
+                  {para.split('\n').map((line, j) => (
+                    <Fragment key={j}>
+                      {j > 0 && <br />}
+                      {line}
+                    </Fragment>
+                  ))}
+                </p>
               ))}
             </div>
             {work.excerpt && (
