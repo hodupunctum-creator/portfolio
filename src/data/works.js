@@ -167,9 +167,10 @@ export const works = [
     role: ['구성 및 기획, 회계, 원고작성, 서기를 담당함'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/project-112.jpg',
+    coverRatio: '1170 / 878',
     color: '#8a1a2b',
-    images: []
+    images: [{ src: '/works/project-112-2.jpg', maxWidth: '750px' }]
   },
   {
     id: 'gwanak-youth-hospitality',
