@@ -185,8 +185,14 @@ img {
   position: sticky;
   top: 0;
   align-self: start;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   padding: 180px var(--gutter) 160px;
+  /* 창이 낮아 목록이 화면보다 길면 목록 자체가 스크롤됩니다 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
 }
 
 .split-main {
@@ -472,7 +478,8 @@ img {
 
   .split-aside {
     position: static;
-    min-height: 0;
+    height: auto;
+    overflow: visible;
     padding: 40px var(--gutter) 24px;
   }
 

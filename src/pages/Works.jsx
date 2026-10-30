@@ -42,6 +42,19 @@ export default function Works() {
     return () => observer.disconnect();
   }, []);
 
+  // 목록이 길어 스크롤되는 경우, 지금 보고 있는 작품 제목이 목록 화면 안에 보이도록 맞춥니다.
+  const asideRef = useRef(null);
+  useEffect(() => {
+    const aside = asideRef.current;
+    const button = aside?.querySelector('button.is-active');
+    if (!aside || !button || aside.scrollHeight <= aside.clientHeight) return;
+    const box = aside.getBoundingClientRect();
+    const target = button.getBoundingClientRect();
+    if (target.top < box.top + 180 || target.bottom > box.bottom - 160) {
+      aside.scrollTo({ top: aside.scrollTop + target.top - box.top - box.height / 2, behavior: 'smooth' });
+    }
+  }, [active]);
+
   const jumpTo = i => slides.current[i]?.scrollIntoView({ block: 'center' });
   const current = orderedWorks[active];
 
@@ -57,7 +70,7 @@ export default function Works() {
       </header>
 
       <div className="split">
-        <aside className="split-aside">
+        <aside className="split-aside" ref={asideRef}>
           <div className="work-index">
             {categories.map(category => (
               <section key={category.id} className="work-index-group">
