@@ -21,7 +21,7 @@
   --line: #ddd5c6;
   /* Info 안의 구역을 나누는 선. --line보다 진해서 배경 위에서도 보입니다 */
   --rule: color-mix(in srgb, var(--fg) 35%, transparent);
-  --accent: #8a1a3c; /* 버건디 */
+  --accent: #d42039; /* 밝은 빨강 */
   --gutter: clamp(16px, 1.6vw, 28px);
   --text-s: 15px;
   --text-body: 17px;
@@ -155,24 +155,25 @@ img {
   aspect-ratio: 1;
   border-radius: 50%;
   will-change: transform;
-  /* 원끼리 겹치면 색이 섞입니다 (버건디 + 파랑 = 짙은 보라) */
+  /* 원끼리 겹치면 색이 섞입니다 (빨강 + 파랑 = 연보라) */
   mix-blend-mode: multiply;
+  opacity: 0.88; /* 겹친 부분이 너무 어두워지지 않게 */
 }
 
-/* 버건디·파랑·초록. 밝은 점을 한쪽으로 치우쳐 두어 한쪽 가장자리는 또렷하고 반대쪽은 번지게 합니다 */
+/* 밝은 빨강·하늘빛 파랑·연한 초록. 밝은 점을 한쪽으로 치우쳐 두어 한쪽 가장자리는 또렷하고 반대쪽은 번지게 합니다 */
 .orb--1 {
   width: min(66vmin, 700px);
-  background: radial-gradient(circle at 32% 68%, #6b0e2c 0%, #8a1a3c 30%, rgba(158, 50, 82, 0.78) 47%, rgba(196, 122, 142, 0.32) 60%, rgba(210, 150, 166, 0) 71%);
+  background: radial-gradient(circle at 32% 68%, #e5283f 0%, #ec4a5c 30%, rgba(240, 112, 128, 0.72) 47%, rgba(246, 168, 178, 0.3) 60%, rgba(248, 190, 198, 0) 71%);
 }
 
 .orb--2 {
   width: min(34vmin, 360px);
-  background: radial-gradient(circle at 66% 34%, #1d4c9a 0%, #3768b6 36%, rgba(108, 148, 204, 0.6) 54%, rgba(150, 180, 222, 0) 71%);
+  background: radial-gradient(circle at 66% 34%, #6d9fe6 0%, #88b2ec 36%, rgba(160, 196, 242, 0.55) 54%, rgba(190, 214, 246, 0) 71%);
 }
 
 .orb--3 {
   width: min(17vmin, 180px);
-  background: radial-gradient(circle at 40% 60%, #2b6646 0%, #47875f 40%, rgba(118, 168, 134, 0.55) 58%, rgba(150, 190, 162, 0) 71%);
+  background: radial-gradient(circle at 40% 60%, #6fbf8c 0%, #8ccda3 40%, rgba(170, 220, 186, 0.55) 58%, rgba(196, 230, 206, 0) 71%);
 }
 
 /* 종이 같은 입자감 */
@@ -351,13 +352,13 @@ img {
   transition: opacity 0.9s ease;
 }
 
-/* 창작활동: 버건디 + 파랑 */
+/* 창작활동: 빨강 + 파랑 */
 .index-orb--big::before {
-  background: radial-gradient(circle at 32% 68%, #6b0e2c 0%, #8a1a3c 30%, rgba(158, 50, 82, 0.78) 47%, rgba(196, 122, 142, 0.32) 60%, rgba(210, 150, 166, 0) 71%);
+  background: radial-gradient(circle at 32% 68%, #e5283f 0%, #ec4a5c 30%, rgba(240, 112, 128, 0.72) 47%, rgba(246, 168, 178, 0.3) 60%, rgba(248, 190, 198, 0) 71%);
 }
 
 .index-orb--small::before {
-  background: radial-gradient(circle at 40% 60%, #1d4c9a 0%, #3366b3 40%, rgba(104, 144, 202, 0.5) 58%, rgba(140, 172, 218, 0) 71%);
+  background: radial-gradient(circle at 40% 60%, #6d9fe6 0%, #86b0ec 40%, rgba(156, 192, 240, 0.5) 58%, rgba(186, 212, 246, 0) 71%);
 }
 
 /* 기타 활동: 초록 + 연한 파랑 */
@@ -366,11 +367,11 @@ img {
 }
 
 .index-orb--big::after {
-  background: radial-gradient(circle at 34% 66%, #2b6646 0%, #3f7d58 32%, rgba(98, 152, 118, 0.72) 50%, rgba(150, 190, 162, 0.28) 62%, rgba(160, 196, 170, 0) 71%);
+  background: radial-gradient(circle at 34% 66%, #6fbf8c 0%, #86ca9d 32%, rgba(160, 214, 178, 0.68) 50%, rgba(196, 230, 206, 0.26) 62%, rgba(204, 234, 212, 0) 71%);
 }
 
 .index-orb--small::after {
-  background: radial-gradient(circle at 40% 60%, #3768b6 0%, #5a86c6 40%, rgba(130, 164, 212, 0.5) 58%, rgba(160, 188, 226, 0) 71%);
+  background: radial-gradient(circle at 40% 60%, #8ab4ec 0%, #a2c4f0 40%, rgba(184, 210, 244, 0.5) 58%, rgba(206, 224, 248, 0) 71%);
 }
 
 .index-orbs[data-category='other'] .index-orb::before {
