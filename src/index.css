@@ -310,6 +310,59 @@ img {
   color: var(--muted);
 }
 
+.index-orb {
+  position: relative;
+  width: 140px;
+  aspect-ratio: 1;
+  margin: 56px 0 0 28px;
+  pointer-events: none;
+  animation: index-orb-float 18s ease-in-out infinite;
+}
+
+.index-orb::before,
+.index-orb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transition: opacity 0.9s ease;
+}
+
+/* 창작활동: 첫 화면과 같은 붉은 주황 */
+.index-orb::before {
+  background: radial-gradient(circle at 34% 66%, #e3412d 0%, #ea5d47 32%, rgba(238, 124, 106, 0.7) 50%, rgba(243, 176, 164, 0.25) 62%, rgba(243, 190, 180, 0) 71%);
+}
+
+/* 기타 활동: 한결 연한 살구색 */
+.index-orb::after {
+  opacity: 0;
+  background: radial-gradient(circle at 34% 66%, #e7834f 0%, #ef9f74 34%, rgba(244, 186, 148, 0.6) 52%, rgba(246, 205, 175, 0.2) 63%, rgba(246, 205, 175, 0) 71%);
+}
+
+.index-orb[data-category='other']::before {
+  opacity: 0;
+}
+
+.index-orb[data-category='other']::after {
+  opacity: 1;
+}
+
+@keyframes index-orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(14px, -10px) rotate(28deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .index-orb {
+    animation: none;
+  }
+}
+
 .work-index-title.is-active {
   color: var(--accent);
 }
@@ -602,6 +655,10 @@ img {
 
   .work-index {
     grid-template-columns: 1fr;
+  }
+
+  .index-orb {
+    display: none;
   }
 
   .work-slide {
