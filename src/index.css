@@ -19,6 +19,8 @@
   --fg: #1f1f1f;
   --muted: #6d6b66;
   --line: #d9d7d1;
+  /* Info 안의 구역을 나누는 선. --line보다 진해서 배경 위에서도 보입니다 */
+  --rule: color-mix(in srgb, var(--fg) 35%, transparent);
   --dot: rgba(31, 31, 31, 0.14);
   --accent: #b90020;
   --gutter: clamp(16px, 1.6vw, 28px);
@@ -359,10 +361,13 @@ img {
   max-width: 560px;
   font-size: var(--text-body);
   line-height: 1.8;
+  word-break: keep-all;
 }
 
 .info {
   max-width: 560px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
 }
 
 .info-title {
@@ -378,10 +383,13 @@ img {
 
 .excerpt {
   margin: 40px 0 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
 }
 
 .excerpt blockquote {
   margin: 0;
+  word-break: keep-all;
   padding-left: 18px;
   border-left: 1px solid var(--line);
   font-size: var(--text-body);
@@ -400,9 +408,11 @@ img {
 }
 
 .info-sub {
-  margin: 0 0 10px;
-  font-size: 19px;
-  font-weight: 400;
+  margin: 0 0 14px;
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
 .prose p {
@@ -490,6 +500,10 @@ img {
   .work-index {
     grid-template-columns: 1fr;
   }
+}
+
+.nowrap {
+  white-space: nowrap;
 }
 
 .visually-hidden {

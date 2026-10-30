@@ -5,6 +5,18 @@ import { orderedWorks as works } from '../data/works';
 import { WorkCover, pad } from './Works';
 import NotFound from './NotFound';
 
+// <작품명> 같은 꺾쇠 제목이 줄 끝에서 '<'와 제목으로 갈라지지 않게 묶습니다.
+const keepTitlesTogether = text =>
+  text.split(/(<[^<>]{1,40}>)/).map((part, i) =>
+    i % 2 ? (
+      <span key={i} className="nowrap">
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+
 export default function WorkDetail() {
   const { id } = useParams();
   const index = works.findIndex(work => work.id === id);
@@ -68,7 +80,7 @@ export default function WorkDetail() {
                   {para.split('\n').map((line, j) => (
                     <Fragment key={j}>
                       {j > 0 && <br />}
-                      {line}
+                      {keepTitlesTogether(line)}
                     </Fragment>
                   ))}
                 </p>
