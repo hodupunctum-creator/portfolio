@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { categories, orderedWorks } from '../data/works';
 
@@ -56,6 +56,16 @@ export default function Works() {
   }, [active]);
 
   const jumpTo = i => slides.current[i]?.scrollIntoView({ block: 'center' });
+
+  // 상세 페이지에서 위로 당겨 돌아왔다면, 방금 보던 작품을 화면 가운데에 둡니다.
+  const location = useLocation();
+  useEffect(() => {
+    const from = location.state?.from;
+    const i = from ? orderedWorks.findIndex(work => work.id === from) : -1;
+    if (i < 0) return undefined;
+    const raf = requestAnimationFrame(() => slides.current[i]?.scrollIntoView({ block: 'center', behavior: 'instant' }));
+    return () => cancelAnimationFrame(raf);
+  }, [location.key]); // eslint-disable-line react-hooks/exhaustive-deps
   const current = orderedWorks[active];
 
   return (

@@ -18,8 +18,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
-  font-size: var(--text-m);
+  gap: 4px;
+  font-size: var(--text-s);
 }
 
 .frame-nav a {
@@ -68,4 +68,48 @@
     color: var(--fg);
     mix-blend-mode: normal;
   }
+}
+
+/* 커서를 따라 남는 선 (CursorTrail) */
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 40;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+/* 상세 페이지 맨 위에서 더 올릴 때 차오르는 게이지 (OverscrollBack) */
+.overscroll-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.overscroll-back-bar {
+  display: block;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(var(--p, 0));
+  transform-origin: left center;
+  transition: transform 0.18s ease-out;
+}
+
+.overscroll-back-label {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: var(--text-s);
+  opacity: min(1, calc(var(--p, 0) * 2));
+  transform: translate(-50%, calc((1 - var(--p, 0)) * -12px));
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
 }
