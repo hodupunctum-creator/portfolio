@@ -205,7 +205,7 @@ img {
 
 .intro-copy p {
   margin: 0;
-  font-size: var(--text-l);
+  font-size: clamp(18px, 1.35vw, 22px);
   line-height: 1.2;
 }
 

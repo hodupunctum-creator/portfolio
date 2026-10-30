@@ -2,7 +2,7 @@
 export const site = {
   name: 'Dahye',
   role: 'Portfolio archive',
-  bio: '자기소개 문구가 들어갈 자리입니다. 어떤 작업을 하는 사람인지, 지금 어디에서 무엇을 하고 있는지 두세 문장으로 적어주세요.',
+  bio: '미흡하지만 그럼에도 계속해서 소설을 쓰는 사람',
   contactLabel: 'Contact',
   email: 'hodupunctum@gmail.com'
 };
