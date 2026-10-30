@@ -107,9 +107,9 @@ export default function Works() {
                   <WorkCover work={work} />
                   <figcaption>
                     <span>
-                      {pad(work.number)}. {work.summary}
+                      {pad(work.number)}. {work.title}
                     </span>
-                    <span>{[work.org, work.period].filter(Boolean).join(', ')}</span>
+                    <span>{work.categoryLabel}</span>
                   </figcaption>
                 </figure>
               </Link>
