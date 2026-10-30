@@ -185,11 +185,12 @@ img {
 
 .split-aside {
   position: sticky;
-  top: 0;
+  /* --head-h: 위에 고정되는 제목 영역의 높이 (Layout.jsx에서 잽니다) */
+  top: var(--head-h, 0px);
   align-self: start;
-  height: 100vh;
-  height: 100dvh;
-  padding: 180px var(--gutter) 160px;
+  height: calc(100vh - var(--head-h, 0px));
+  height: calc(100dvh - var(--head-h, 0px));
+  padding: 48px var(--gutter) 120px;
   /* 창이 낮아 목록이 화면보다 길면 목록 자체가 스크롤됩니다 */
   overflow-y: auto;
   scrollbar-width: thin;

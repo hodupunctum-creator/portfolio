@@ -50,7 +50,7 @@ export default function Works() {
     if (!aside || !button || aside.scrollHeight <= aside.clientHeight) return;
     const box = aside.getBoundingClientRect();
     const target = button.getBoundingClientRect();
-    if (target.top < box.top + 180 || target.bottom > box.bottom - 160) {
+    if (target.top < box.top + 48 || target.bottom > box.bottom - 120) {
       aside.scrollTo({ top: aside.scrollTop + target.top - box.top - box.height / 2, behavior: 'smooth' });
     }
   }, [active]);
