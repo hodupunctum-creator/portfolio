@@ -82,7 +82,7 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
-  background: radial-gradient(circle at 36% 64%, #e3412d 0%, #ec6a52 42%, rgba(243, 160, 146, 0.45) 60%, rgba(243, 170, 156, 0) 72%);
+  background: radial-gradient(circle at 36% 64%, #6b0e2c 0%, #8a1a3c 42%, rgba(176, 92, 118, 0.45) 60%, rgba(196, 122, 142, 0) 72%);
   mix-blend-mode: multiply;
 }
 
