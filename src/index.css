@@ -162,18 +162,35 @@ img {
 
 /* 밝은 빨강·하늘빛 파랑·연한 초록. 밝은 점을 한쪽으로 치우쳐 두어 한쪽 가장자리는 또렷하고 반대쪽은 번지게 합니다 */
 .orb--1 {
+  --hot: 32% 68%;
   width: min(66vmin, 700px);
   background: radial-gradient(circle at 32% 68%, #e5283f 0%, #ec4a5c 30%, rgba(240, 112, 128, 0.72) 47%, rgba(246, 168, 178, 0.3) 60%, rgba(248, 190, 198, 0) 71%);
 }
 
 .orb--2 {
+  --hot: 66% 34%;
   width: min(34vmin, 360px);
   background: radial-gradient(circle at 66% 34%, #6d9fe6 0%, #88b2ec 36%, rgba(160, 196, 242, 0.55) 54%, rgba(190, 214, 246, 0) 71%);
 }
 
 .orb--3 {
+  --hot: 40% 60%;
   width: min(17vmin, 180px);
   background: radial-gradient(circle at 40% 60%, #6fbf8c 0%, #8ccda3 40%, rgba(170, 220, 186, 0.55) 58%, rgba(196, 230, 206, 0) 71%);
+}
+
+/* 원 위의 희미한 점 질감. 원과 함께 구르고, 원의 번진 가장자리를 따라 함께 옅어집니다 */
+.orb-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='d' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.7' numOctaves='1' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 14 0 0 0 -8.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  -webkit-mask-image: radial-gradient(circle at var(--hot, 50% 50%), #000 0%, rgba(0, 0, 0, 0.85) 40%, transparent 68%);
+  mask-image: radial-gradient(circle at var(--hot, 50% 50%), #000 0%, rgba(0, 0, 0, 0.85) 40%, transparent 68%);
 }
 
 /* 종이 같은 입자감 */
@@ -328,6 +345,7 @@ img {
 }
 
 .index-orb--big {
+  --hot: 34% 66%;
   top: 0;
   left: 20px;
   width: 170px;
@@ -335,6 +353,7 @@ img {
 
 /* 작은 원: 큰 원 오른쪽 아래, 반대 박자로 떠다닙니다 */
 .index-orb--small {
+  --hot: 40% 60%;
   top: 128px;
   left: 196px;
   width: 78px;

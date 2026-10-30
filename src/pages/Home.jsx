@@ -30,7 +30,9 @@ export default function Home() {
             data-dir={orb.dir}
             data-speed={orb.speed}
             data-rot={i}
-          />
+          >
+            <i className="orb-grain" />
+          </div>
         ))}
       </div>
 

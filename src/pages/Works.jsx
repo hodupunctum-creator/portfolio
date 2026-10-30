@@ -101,8 +101,12 @@ export default function Works() {
                 {/* 마지막 목록(기타 활동) 바로 아래의 작은 그라데이션 원. 지금 보는 작품의 구분에 따라 색이 바뀝니다. */}
                 {category.id === categories[categories.length - 1].id && (
                   <div className="index-orbs" data-category={current.category} aria-hidden="true">
-                    <div className="index-orb index-orb--big" />
-                    <div className="index-orb index-orb--small" />
+                    <div className="index-orb index-orb--big">
+                      <i className="orb-grain" />
+                    </div>
+                    <div className="index-orb index-orb--small">
+                      <i className="orb-grain" />
+                    </div>
                   </div>
                 )}
               </section>
