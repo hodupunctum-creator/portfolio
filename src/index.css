@@ -385,7 +385,7 @@ img {
 .excerpt {
   margin: 40px 0 0;
   padding-top: 28px;
-  border-top: 1px solid var(--rule);
+  border-top: 1px dashed var(--rule);
 }
 
 .excerpt blockquote {
@@ -393,8 +393,8 @@ img {
   word-break: keep-all;
   padding-left: 18px;
   border-left: 1px solid var(--line);
-  font-size: var(--text-body);
-  line-height: 1.8;
+  font-size: var(--text-s);
+  line-height: 1.85;
 }
 
 .excerpt blockquote p {
