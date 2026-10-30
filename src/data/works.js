@@ -113,9 +113,11 @@ export const works = [
     role: ['사업 결과자료집 기획 및 원고를 작성', '매주 화요일, 목요일마다 재단 블로그에 업로드함'],
     outcome: [],
     links: [{ label: '블로그 게시글 1', url: 'https://m.blog.naver.com/gwanakcf/222166618608' }, { label: '블로그 게시글 2', url: 'https://m.blog.naver.com/gwanakcf/222175302096' }],
-    cover: '',
+    cover: '/works/gwanak-planner-diary.jpg',
+    coverRatio: '377 / 568',
+    coverMaxWidth: '377px',
     color: '#a3362f',
-    images: []
+    images: ['/works/gwanak-planner-diary-2.jpg', '/works/gwanak-planner-diary-3.jpg', '/works/gwanak-planner-diary-4.jpg']
   },
   {
     id: 'female-detective-anthology',
