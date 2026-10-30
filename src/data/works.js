@@ -181,7 +181,9 @@ export const works = [
     role: ['관악청년교류단의 일원으로 참여하였으며, 후기를 기획하고 적음'],
     outcome: ['관악문화재단 블로그에 총 3개의 게시글을 게시함'],
     links: [{ label: '블로그 게시글 1', url: 'https://m.blog.naver.com/gwanakcf/222484332304' }, { label: '블로그 게시글 2', url: 'https://m.blog.naver.com/gwanakcf/222485530290' }, { label: '블로그 게시글 3', url: 'https://m.blog.naver.com/gwanakcf/222488709403' }],
-    cover: '',
+    cover: '/works/gwanak-youth-hospitality.jpg',
+    coverRatio: '1106 / 1032',
+    coverMaxWidth: '560px',
     color: '#b90020',
     images: []
   },
