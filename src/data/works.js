@@ -145,9 +145,11 @@ export const works = [
     role: ['엽편 소설 <춤추는 미술관의 유령> 집필'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/the-meolli.jpg',
+    coverRatio: '1 / 1',
+    coverMaxWidth: '560px',
     color: '#5c1420',
-    images: []
+    images: [{ src: '/works/the-meolli-2.jpg', maxWidth: '560px' }]
   },
   {
     id: 'project-112',
