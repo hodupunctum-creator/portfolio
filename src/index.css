@@ -589,6 +589,18 @@ img {
   white-space: nowrap;
 }
 
+/* About 페이지 사진: 세로 사진이 화면을 다 차지하지 않게 */
+.about-figure {
+  margin: 0;
+  max-width: 420px;
+}
+
+.about-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

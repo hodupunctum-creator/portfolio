@@ -15,6 +15,15 @@ export default function About() {
           <div className="prose">
             <p className="indent">{site.bio}</p>
           </div>
+          <figure className="about-figure">
+            <img
+              src="/about-sign.jpg"
+              alt="'미흡하지만 최선을 다해 음식을 만들겠습니다 / I'm not good enough, but I'll do my best to make food. Thank you!'라고 적힌 노점 메뉴판"
+              width="840"
+              height="1120"
+              loading="lazy"
+            />
+          </figure>
           <dl className="facts">
             <dt>Email</dt>
             <dd>
