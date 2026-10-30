@@ -238,7 +238,9 @@ export const works = [
     role: ['커버 사진 촬영'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/yeoreumnun-south-wind.jpg',
+    coverRatio: '1170 / 1754',
+    coverMaxWidth: '440px',
     color: '#a3362f',
     images: []
   },
