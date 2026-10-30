@@ -1,36 +1,43 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import TextLoop from '../components/TextLoop/TextLoop';
 import { site } from '../data/site';
 import { works } from '../data/works';
+import { startRollingOrbs } from '../lib/rollingOrbs';
+
+// 원마다 시작 위치(x, y: 화면 비율), 굴러가는 방향(dir: 라디안), 속도(speed: px/초)를 정합니다.
+const ORBS = [
+  { className: 'orb--1', x: 0.58, y: 0.42, dir: 2.6, speed: 22 },
+  { className: 'orb--2', x: 0.18, y: 0.3, dir: 0.5, speed: 30 },
+  { className: 'orb--3', x: 0.82, y: 0.78, dir: 4, speed: 38 }
+];
 
 export default function Home() {
+  const orbsRef = useRef(null);
+
+  useEffect(() => (orbsRef.current ? startRollingOrbs(orbsRef.current) : undefined), []);
+
   return (
     <main className="intro">
-      <h1 className="visually-hidden">Dahye's Portfolio</h1>
-      <TextLoop
-        text="Dahye's Portfolio"
-        shape="wave"
-        speed={90}
-        direction="forward"
-        separator="✦"
-        curviness={90}
-        tilt={0}
-        fontSize={46}
-        fontWeight={800}
-        letterSpacing={2}
-        uppercase
-        ribbon
-        ribbonColor="#b90020"
-        ribbonWidth={86}
-        edgeFade={0}
-        cross={false}
-        crossAngle={16}
-        draggable={false}
-        scrollBoost={0}
-        outline={false}
-        pauseOnHover
-      />
+      <div className="intro-orbs" ref={orbsRef} aria-hidden="true">
+        {ORBS.map((orb, i) => (
+          <div
+            key={orb.className}
+            className={`orb ${orb.className}`}
+            data-orb
+            data-x={orb.x}
+            data-y={orb.y}
+            data-dir={orb.dir}
+            data-speed={orb.speed}
+            data-rot={i}
+          />
+        ))}
+      </div>
+
+      <h1 className="intro-title" aria-label="Dahye's Portfolio">
+        <span>Dahye's</span>
+        <span>Portfolio</span>
+      </h1>
 
       <div className="intro-copy">
         <span className="label">intro</span>

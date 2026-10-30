@@ -18,8 +18,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 4px;
-  font-size: var(--text-s);
+  gap: 6px;
+  font-size: var(--text-m);
 }
 
 .frame-nav a {
@@ -70,15 +70,20 @@
   }
 }
 
-/* 커서를 따라 남는 선 (CursorTrail) */
-.cursor-trail {
+/* 커서를 따라오는 작은 그라데이션 원 (CursorOrb) */
+.cursor-orb {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 40;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  z-index: 60;
+  border-radius: 50%;
   pointer-events: none;
-  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(circle at 36% 64%, #e3412d 0%, #ec6a52 42%, rgba(243, 160, 146, 0.45) 60%, rgba(243, 170, 156, 0) 72%);
+  mix-blend-mode: multiply;
 }
 
 /* 상세 페이지 맨 위에서 더 올릴 때 차오르는 게이지 (OverscrollBack) */

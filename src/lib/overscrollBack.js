@@ -1,13 +1,14 @@
-// 페이지 맨 위에서 스크롤을 '더' 올리면 그만큼 게이지가 차고, 다 차면 onTrigger를 부릅니다.
+// 페이지 맨 위에서 스크롤을 '더' 올리면 그만큼 게이지가 차고, 다 차면 잠깐(hold) 머문 뒤 onTrigger를 부릅니다.
 // 트랙패드 관성으로 맨 위에 도착한 직후의 스크롤은 세지 않고,
 // 맨 위에서 잠깐 멈췄다가 다시 올리는 새 동작부터 셉니다. 손을 떼면 게이지는 0으로 돌아갑니다.
 
-export function watchOverscrollBack({ threshold = 420, pause = 180, idle = 350, onProgress, onTrigger }) {
+export function watchOverscrollBack({ threshold = 800, hold = 320, pause = 180, idle = 350, onProgress, onTrigger }) {
   let pull = 0;
   let armed = false;
   let done = false;
   let lastWheel = -Infinity;
   let idleTimer = 0;
+  let triggerTimer = 0;
 
   const set = value => {
     pull = value;
@@ -34,9 +35,10 @@ export function watchOverscrollBack({ threshold = 420, pause = 180, idle = 350, 
     }
     set(pull - dy);
     if (pull >= threshold) {
+      // 게이지가 다 찬 걸 잠깐 보여 준 뒤에 넘어갑니다.
       done = true;
       clearTimeout(idleTimer);
-      onTrigger();
+      triggerTimer = setTimeout(onTrigger, hold);
     }
   };
 
@@ -44,5 +46,6 @@ export function watchOverscrollBack({ threshold = 420, pause = 180, idle = 350, 
   return () => {
     window.removeEventListener('wheel', onWheel);
     clearTimeout(idleTimer);
+    clearTimeout(triggerTimer);
   };
 }

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 import { site } from '../../data/site';
-import CursorTrail from '../CursorTrail';
+import CursorOrb from '../CursorOrb';
 import './Layout.css';
 
 export default function Layout() {
@@ -48,7 +48,7 @@ export default function Layout() {
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </address>
       <span className="frame-year">{new Date().getFullYear()}.</span>
-      <CursorTrail />
+      <CursorOrb />
     </div>
   );
 }
