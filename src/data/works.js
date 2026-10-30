@@ -191,6 +191,24 @@ export const works = [
     images: []
   },
   {
+    id: 'yeoreumnun-yubing-cover',
+    title: '<유빙> 커버 사진',
+    tag: '여름눈',
+    category: 'creative',
+    org: '개인',
+    period: '2025.12.15',
+    summary: '밴드 여름눈 <유빙> 커버 사진 촬영',
+    description: '밴드 여름눈 <유빙> 커버 사진 촬영',
+    role: ['커버 사진 촬영'],
+    outcome: [],
+    links: [],
+    cover: '/works/yeoreumnun-yubing.jpg',
+    coverRatio: '1170 / 1688',
+    coverMaxWidth: '440px',
+    color: '#5b7fa6',
+    images: []
+  },
+  {
     id: 'yeoreumnun-farewell-footprints',
     title: '<이별발자국> 소개글 및 커버 사진',
     tag: '여름눈',
