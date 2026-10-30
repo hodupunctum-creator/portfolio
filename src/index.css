@@ -150,11 +150,12 @@ img {
 
 .orb {
   position: absolute;
-  top: 0;
-  left: 0;
+  /* 자바스크립트가 움직이기 전에도 제자리(--x, --y)에 보이도록 CSS로 먼저 놓아 둡니다 */
+  top: var(--y, 50%);
+  left: var(--x, 50%);
+  transform: translate(-50%, -50%);
   aspect-ratio: 1;
   border-radius: 50%;
-  will-change: transform;
   /* 원끼리 겹치면 색이 섞입니다 (빨강 + 파랑 = 연보라) */
   mix-blend-mode: multiply;
   opacity: 0.88; /* 겹친 부분이 너무 어두워지지 않게 */

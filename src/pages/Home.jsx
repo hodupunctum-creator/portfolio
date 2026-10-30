@@ -34,6 +34,7 @@ export default function Home() {
             data-dir={orb.dir}
             data-speed={orb.speed}
             data-rot={i}
+            style={{ '--x': `${orb.x * 100}%`, '--y': `${orb.y * 100}%` }}
           >
             <i className="orb-grain" />
           </div>

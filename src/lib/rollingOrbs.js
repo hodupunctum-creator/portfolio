@@ -32,19 +32,32 @@ export function startRollingOrbs(container, { speed = 1 } = {}) {
 
   let w = 0;
   let h = 0;
+  let ready = false;
+  // 화면 크기를 잽니다. 아직 레이아웃이 잡히기 전이라 0이면, 원은 CSS가 놓아 둔 자리에 그대로 두고 다음에 다시 잽니다.
   const measure = () => {
     w = container.clientWidth;
     h = container.clientHeight;
+    if (!w || !h) return false;
     for (const o of orbs) {
       o.r = o.el.offsetWidth / 2;
-      if (!o.px && !o.py) {
+      if (!ready) {
         o.px = o.x * w;
         o.py = o.y * h;
       }
     }
+    if (!ready) {
+      // 이제부터는 자바스크립트가 위치를 정하므로 CSS의 시작 위치를 왼쪽 위로 돌려 둡니다.
+      for (const o of orbs) {
+        o.el.style.left = '0';
+        o.el.style.top = '0';
+      }
+      ready = true;
+    }
+    return true;
   };
 
   const place = o => {
+    if (!ready) return;
     o.el.style.transform = `translate(${o.px - o.r}px, ${o.py - o.r}px) rotate(${o.rot}rad) scale(${o.scale})`;
   };
 
@@ -52,6 +65,10 @@ export function startRollingOrbs(container, { speed = 1 } = {}) {
   let last = 0;
   let t = rand(0, 100);
   const tick = now => {
+    if (!ready && !measure()) {
+      raf = requestAnimationFrame(tick);
+      return;
+    }
     const dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
     last = now;
     t += dt;
@@ -96,9 +113,13 @@ export function startRollingOrbs(container, { speed = 1 } = {}) {
     orbs.forEach(place);
   };
   window.addEventListener('resize', onResize);
+  // 휴대폰 주소창이 접히는 등 화면 높이가 바뀌어도 다시 잽니다.
+  const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(onResize) : null;
+  observer?.observe(container);
 
   return () => {
     cancelAnimationFrame(raf);
     window.removeEventListener('resize', onResize);
+    observer?.disconnect();
   };
 }
