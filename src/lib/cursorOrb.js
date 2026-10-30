@@ -1,4 +1,5 @@
 // 작은 그라데이션 원이 커서를 살짝 늦게 따라옵니다. 링크·버튼 위에서는 조금 커집니다.
+// 휴대폰에서는 손가락으로 화면을 쓸어 스크롤하는 동안 손가락을 따라오고, 손을 떼면 사라집니다.
 
 export function startCursorOrb(el, { ease = 0.16 } = {}) {
   let tx = -100;
@@ -40,11 +41,41 @@ export function startCursorOrb(el, { ease = 0.16 } = {}) {
     el.style.opacity = '0';
   };
 
+  let hideTimer = 0;
+  const onTouch = e => {
+    const touch = e.touches[0];
+    if (!touch) return;
+    clearTimeout(hideTimer);
+    tx = touch.clientX;
+    ty = touch.clientY;
+    if (!visible) {
+      visible = true;
+      x = tx;
+      y = ty;
+      el.style.opacity = '1';
+    }
+    targetScale = 1;
+    wake();
+  };
+  const onTouchEnd = () => {
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(onLeave, 450);
+  };
+
   window.addEventListener('pointermove', onMove, { passive: true });
   document.documentElement.addEventListener('mouseleave', onLeave);
+  window.addEventListener('touchstart', onTouch, { passive: true });
+  window.addEventListener('touchmove', onTouch, { passive: true });
+  window.addEventListener('touchend', onTouchEnd, { passive: true });
+  window.addEventListener('touchcancel', onTouchEnd, { passive: true });
   return () => {
     window.removeEventListener('pointermove', onMove);
     document.documentElement.removeEventListener('mouseleave', onLeave);
+    window.removeEventListener('touchstart', onTouch);
+    window.removeEventListener('touchmove', onTouch);
+    window.removeEventListener('touchend', onTouchEnd);
+    window.removeEventListener('touchcancel', onTouchEnd);
+    clearTimeout(hideTimer);
     cancelAnimationFrame(raf);
   };
 }

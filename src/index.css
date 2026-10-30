@@ -686,9 +686,11 @@ img {
     grid-template-columns: 1fr;
   }
 
-  /* 휴대폰 폭에서는 한 줄에 다 들어가지 않아 줄바꿈을 허용합니다 */
+  /* 휴대폰: 소개 문구가 화면 폭에 맞춰 한 줄로 들어가도록 글자 크기를 줄입니다 (첫 줄 들여쓰기 없음) */
   .intro-copy p {
-    white-space: normal;
+    white-space: nowrap;
+    text-indent: 0;
+    font-size: min(16px, calc((100vw - 2 * var(--gutter)) / 23));
   }
 
   .intro-title {
