@@ -15,13 +15,12 @@
 }
 
 :root {
-  --bg: #f0efeb;
+  --bg: #f4efe4; /* 미색 종이 */
   --fg: #1f1f1f;
   --muted: #6d6b66;
-  --line: #d9d7d1;
+  --line: #ddd5c6;
   /* Info 안의 구역을 나누는 선. --line보다 진해서 배경 위에서도 보입니다 */
   --rule: color-mix(in srgb, var(--fg) 35%, transparent);
-  --dot: rgba(31, 31, 31, 0.14);
   --accent: #b90020;
   --gutter: clamp(16px, 1.6vw, 28px);
   --text-s: 15px;
@@ -39,6 +38,21 @@
   box-sizing: border-box;
 }
 
+/* 종이 질감: 고운 입자 + 아주 옅은 얼룩. 화면 전체에 고정해서 머리글과 본문이 같은 종이처럼 보이게 합니다 */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.37 0 0 0 0 0.3 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1000' preserveAspectRatio='none'%3E%3Cfilter id='m' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0035' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.6 0 0 0 0 0.52 0 0 0 0 0.4 0 0 0 0.16 -0.03'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  background-size: 240px 240px, 100% 100%;
+  background-repeat: repeat, no-repeat;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -54,8 +68,6 @@ body {
   font-family: var(--font);
   color: var(--fg);
   background-color: var(--bg);
-  background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
-  background-size: 22px 22px;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.01em;
   word-break: keep-all;
@@ -198,7 +210,7 @@ img {
   top: 16vh;
   left: 0;
   display: grid;
-  grid-template-columns: minmax(120px, 8vw) minmax(0, 480px);
+  grid-template-columns: minmax(120px, 8vw) auto;
   gap: var(--gutter);
   padding: 0 var(--gutter);
 }
@@ -206,6 +218,7 @@ img {
 .intro-copy p {
   margin: 0;
   font-size: clamp(18px, 1.35vw, 22px);
+  white-space: nowrap; /* 소개 문구는 한 줄로 */
   line-height: 1.2;
 }
 
@@ -543,6 +556,11 @@ img {
     position: static;
     order: -1;
     grid-template-columns: 1fr;
+  }
+
+  /* 휴대폰 폭에서는 한 줄에 다 들어가지 않아 줄바꿈을 허용합니다 */
+  .intro-copy p {
+    white-space: normal;
   }
 
   .intro-title {
