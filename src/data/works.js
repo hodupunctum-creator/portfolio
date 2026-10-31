@@ -252,13 +252,15 @@ export const works = [
     org: '291 포토그랩스',
     period: '2021.06 ~ 진행중',
     summary: '291포토그랩스 500photographs’ 프로젝트에 사진 작가로 참여 중',
-    description: '291포토그랩스 500photographs’ 프로젝트에 사진 작가로 참여 중',
+    description: "국내 복합 문화 공간인 '291포토그랩스(291Photographs)'에서 진행하는 사진 전시 및 판매 지원 프로젝트인 '500Photographs’ portfolio'에 작가로 참여했다.\n\n여행 때 찍은 사진과 일상에서 찍은 사진들이 전시 및 판매되었다.",
     role: ['참여 작가'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/500photographs.jpg',
+    coverRatio: '750 / 1048',
+    coverMaxWidth: '440px',
     color: '#a3362f',
-    images: []
+    images: [{ src: '/works/500photographs-2.jpg', maxWidth: '440px' }, { src: '/works/500photographs-3.jpg', maxWidth: '440px' }]
   },
   {
     id: 'geoq-3-4',
