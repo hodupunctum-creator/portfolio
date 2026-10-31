@@ -229,6 +229,22 @@ export const works = [
     images: [{ src: '/works/yeoreumnun-farewell-footprints.jpg', maxWidth: '440px' }, { src: '/works/yeoreumnun-yubing.jpg', maxWidth: '440px' }]
   },
   {
+    id: 'cake-cutting',
+    title: '케이크 잘라먹기',
+    tag: '',
+    category: 'creative',
+    org: '',
+    period: '',
+    summary: '케이크 잘라먹기',
+    description: '케이크 잘라먹기',
+    role: [],
+    outcome: [],
+    links: [],
+    cover: '',
+    color: '#e8a0a8',
+    images: []
+  },
+  {
     id: 'moni-photo-exhibition',
     title: '네 이름은 모니?',
     tag: '개인 사진전',
