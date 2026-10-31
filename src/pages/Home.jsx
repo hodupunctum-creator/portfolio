@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import { site } from '../data/site';
-import { works } from '../data/works';
 import { startRollingOrbs } from '../lib/rollingOrbs';
 
 // 원마다 시작 위치(x, y: 화면 비율), 굴러가는 방향(dir: 라디안), 속도(speed: px/초)를 정합니다.
@@ -51,7 +50,7 @@ export default function Home() {
         <div>
           <p className="indent">{site.bio}</p>
           <Link to="/works" className="intro-enter">
-            작품 {String(works.length).padStart(2, '0')}개 보기 →
+            Works 둘러보기 →
           </Link>
         </div>
       </div>
