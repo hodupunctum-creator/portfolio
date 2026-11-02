@@ -13,6 +13,7 @@
 //          비워두면 color 값으로 채운 표지가 표시됩니다.
 // - coverRatio: (선택) 표지 비율. 기본은 16 / 9, 정사각형이면 '1 / 1'
 // - coverMaxWidth: (선택) 세로로 긴 표지처럼 너무 커 보일 때 최대 너비 (예: '440px'). 가운데 정렬됩니다.
+// - listCovers: (선택) Works 목록에서만 나란히 보여줄 사진 두 장. 상세 페이지 표지는 cover 그대로.
 // - images: 상세 페이지에 보여줄 추가 이미지 경로 목록
 //          세로로 긴 사진을 작게 보이려면 { src: '/works/파일명.jpg', maxWidth: '440px' } 형태로 적으세요.
 // - excerpt: (선택) 상세 페이지에 인용할 글 전문 { title, text: [줄 목록], credit }
@@ -241,6 +242,7 @@ export const works = [
     outcome: [],
     links: [],
     cover: '/works/cake-cutting.jpg',
+    listCovers: ['/works/cake-cutting.jpg', '/works/cake-cutting-10.jpg'],
     coverRatio: '1014 / 1450',
     coverMaxWidth: '440px',
     color: '#e8a0a8',

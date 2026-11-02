@@ -5,7 +5,17 @@ import { categories, orderedWorks } from '../data/works';
 
 export const pad = n => String(n).padStart(2, '0');
 
-export function WorkCover({ work }) {
+// listCovers: 목록(Works)에서만 사진 여러 장을 나란히 묶어 보여 줄 때 씁니다. 상세 페이지는 cover 한 장만 씁니다.
+export function WorkCover({ work, inList = false }) {
+  if (inList && work.listCovers?.length > 1) {
+    return (
+      <div className="work-cover-pair" aria-label={work.title} role="img">
+        {work.listCovers.map(src => (
+          <img key={src} src={src} alt="" loading="lazy" />
+        ))}
+      </div>
+    );
+  }
   return work.cover ? (
     <img
       className="work-cover"
@@ -125,7 +135,7 @@ export default function Works() {
                 ref={el => (slides.current[i] = el)}
               >
                 <figure style={{ margin: 0 }}>
-                  <WorkCover work={work} />
+                  <WorkCover work={work} inList />
                   <figcaption>
                     <span>
                       {pad(work.number)}. {work.title}
