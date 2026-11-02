@@ -231,18 +231,20 @@ export const works = [
   {
     id: 'cake-cutting',
     title: '케이크 잘라먹기',
-    tag: '',
+    tag: '인물 사진',
     category: 'creative',
-    org: '',
+    org: '개인',
     period: '',
-    summary: '케이크 잘라먹기',
-    description: '케이크 잘라먹기',
-    role: [],
+    summary: '사람의 얼굴에 찰나로 스치는 표정을 들여다본 인물 사진 작업',
+    description: '늘 흘러가는 풍경만 찍다가 집중해서 사람을 들여다보고 관찰하고 싶었다. 시작은 친구의 얼굴, 그러니까 표정이었다. 순식간에 나타났다가 사라진 표정을 포착한 게 기뻐서 계속 계속 보고 싶었다. 그러다 친한 친구가 아닌 사람의 얼굴에서도 이런 표정을 발견할 수 있을까 궁금했다.\n\n만약 발견할 수 있다면 찰나에 나타났다가 사라지는 표정의 순간을 사진으로 남기고 싶었다. 그러기 위해서는 어떻게 해야 하나 고민했다. 고민하다가 커뮤니티를 통해 사람을 구하고, 사진을 찍으러 나갔다. 아무런 말이나 주워섬기다가 문득 깨달았다. 결국 표정을 보기 위해서 우리는 어떤 관계를 맺어야 한다는 걸. 그것이 짧든 길든, 얕든 깊든 상관없이 우리 사이에 공유하는 공기를 만들어 잠깐이라도 같이 들이쉬었다가 내쉬고 그것이 섞이는 시간과 이유가 필요하다는 것을.\n\n돌아와서 찍은 사진을 들여다보다가 사람을 찍는 것은 커다란 홀케이크를 조심스럽게 잘라 먹는 것과 비슷하다는 생각을 했다. 어떤 것이 어떤 모양으로 잘릴지, 드러난 단층은 어떤 시간을 품고 있을지 모른다는 점이 그런 것 같다. 케이크가 무너지지 않게 조심조심 잘라먹는 것처럼 조심스럽게 작업했다.',
+    role: ['기획, 섭외, 촬영'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/cake-cutting.jpg',
+    coverRatio: '1014 / 1450',
+    coverMaxWidth: '440px',
     color: '#e8a0a8',
-    images: []
+    images: [{ src: '/works/cake-cutting-2.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-3.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-4.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-5.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-6.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-7.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-8.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-9.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-10.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-11.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-12.jpg', maxWidth: '440px' }]
   },
   {
     id: 'moni-photo-exhibition',
