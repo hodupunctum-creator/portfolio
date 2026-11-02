@@ -255,14 +255,15 @@ export const works = [
     category: 'creative',
     org: '개인',
     period: '2022.09.09 ~ 2022.10.31',
-    summary: '카페 [푸르토아]에서, 친구가 임시보호 중인 강아지, 모니의 입양홍보를 위한 사진전을 개최함',
-    description: '카페 [푸르토아]에서, 친구가 임시보호 중인 강아지, 모니의 입양홍보를 위한 사진전을 개최함',
-    role: ['사진 기획 및 배치'],
+    summary: '친구가 임시보호하던 강아지 모니의 입양 홍보를 위해 카페 푸르토아에서 연 사진전',
+    description: '하얀 강아지는 어느 동네의 스타벅스 앞에 버려졌다고 한다.\n강아지의 이름은 모니.\n구조자 분이 \'네 이름은 모니?\'라고 물었던 것이 시작이다.\n당시 친구가 모니를 임시보호하고 있었고, 나는 모니를 찍으러 친구의 집을 닳도록 찾아갔다.\n찍은 사진으로 카페 푸르토아에서 입양 홍보를 위한 사진전을 개최했다.\n\n따로 입양을 원한다는 연락이 온 적은 없다.\n그래도 모니는 여전히 모니다. 현재 임시보호했던 친구가 입양하여, 친구와 나와 함께 살고 있다.',
+    role: ['촬영', '사진전 기획 및 배치'],
     outcome: ['약 1달간 전시를 개최함'],
     links: [],
-    cover: '',
+    cover: '/works/moni.jpg',
+    coverRatio: '1170 / 581',
     color: '#5c1420',
-    images: []
+    images: [{ src: '/works/moni-2.jpg', maxWidth: '440px' }, { src: '/works/moni-3.jpg', maxWidth: '640px' }, { src: '/works/moni-4.jpg', maxWidth: '640px' }, { src: '/works/moni-5.jpg', maxWidth: '440px' }]
   },
   {
     id: '500photographs',
