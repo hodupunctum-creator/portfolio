@@ -241,12 +241,12 @@ export const works = [
     role: ['기획, 섭외, 촬영'],
     outcome: [],
     links: [],
-    cover: '/works/cake-cutting.jpg',
-    listCovers: ['/works/cake-cutting.jpg', '/works/cake-cutting-10.jpg'],
-    coverRatio: '1014 / 1450',
-    coverMaxWidth: '440px',
+    cover: '/works/cake-cutting-7.jpg',
+    listCovers: ['/works/cake-cutting-10.jpg', '/works/cake-cutting.jpg'],
+    coverRatio: '1170 / 810',
+    coverMaxWidth: '560px',
     color: '#e8a0a8',
-    images: [{ src: '/works/cake-cutting-2.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-3.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-4.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-5.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-6.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-7.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-8.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-9.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-10.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-11.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-12.jpg', maxWidth: '440px' }]
+    images: [{ src: '/works/cake-cutting-8.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-9.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-10.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-2.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-3.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-4.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-5.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-6.jpg', maxWidth: '560px' }, { src: '/works/cake-cutting-11.jpg', maxWidth: '440px' }, { src: '/works/cake-cutting-12.jpg', maxWidth: '440px' }]
   },
   {
     id: 'moni-photo-exhibition',
