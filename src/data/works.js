@@ -302,18 +302,20 @@ export const works = [
   {
     id: 'maeum-login-34',
     title: '마음로그인 34호',
-    tag: '소식지',
+    tag: '매거진',
     category: 'other',
-    org: '',
-    period: '',
-    summary: '마음로그인 34호 제작',
-    description: '마음로그인 34호 제작에 참여했다.',
-    role: [],
+    org: '국립정신건강센터',
+    period: '2026',
+    summary: '국립정신건강센터 정신건강 소식지 마음로그인 34호 PM, 교정교열, 편집',
+    description: '국립정신건강센터에서 발행하는 매거진인 마음로그인 34호에서 PM과 교정교열, 편집을 맡았다.',
+    role: ['프로젝트 PM', '교정교열', '편집'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/maeum-login.jpg',
+    coverRatio: '854 / 1176',
+    coverMaxWidth: '440px',
     color: '#7a6a9a',
-    images: []
+    images: ['/works/maeum-login-2.jpg', '/works/maeum-login-3.jpg']
   },
   {
     id: 'food-nuri-cardnews',
