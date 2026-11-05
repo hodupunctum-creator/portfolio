@@ -115,7 +115,15 @@ export default function WorkDetail() {
 
         <div className="split-main">
           <WorkCover work={work} />
-          {work.images.map(image => {
+          {work.images.map((image, i) => {
+            // { heading: '국문' } 처럼 적으면 사진 묶음 사이에 작은 제목이 들어갑니다.
+            if (image.heading) {
+              return (
+                <h3 key={`h${i}`} className="info-sub image-group-title">
+                  {image.heading}
+                </h3>
+              );
+            }
             const { src, maxWidth } = typeof image === 'string' ? { src: image } : image;
             return (
               <img

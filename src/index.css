@@ -513,6 +513,13 @@ img {
 }
 
 /* 목록에서 세로 사진 두 장을 나란히 */
+/* 상세 이미지 묶음 제목 (예: 국문 / 영문) */
+.image-group-title {
+  margin: 24px 0 -8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
 .work-cover-pair {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
