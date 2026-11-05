@@ -388,18 +388,20 @@ export const works = [
   {
     id: 'chungho-people',
     title: '청호피플 338호, 339호',
-    tag: '업무',
+    tag: '사보',
     category: 'other',
     org: '내일날씨',
-    period: '',
-    summary: '청호피플 338호, 339호 제작',
-    description: '청호피플 338호, 339호 제작',
-    role: ['취재, 원고 작성, 데이터 정리'],
+    period: '2024',
+    summary: '청호나이스 사보 청호피플 338호, 339호 취재 및 원고 작성',
+    description: "청호나이스에서 발간하는 사보 '청호피플' 338호와 339호의 취재와 원고 작성을 맡았다.",
+    role: ['취재', '원고 작성', '데이터 정리'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/chungho-people.jpg',
+    coverRatio: '903 / 1116',
+    coverMaxWidth: '440px',
     color: '#5c1420',
-    images: []
+    images: ['/works/chungho-people-1.jpg', '/works/chungho-people-2.jpg', '/works/chungho-people-3.jpg', '/works/chungho-people-4.jpg', '/works/chungho-people-5.jpg']
   },
   {
     id: 'agri-tech-guide',
