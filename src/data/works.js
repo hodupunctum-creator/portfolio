@@ -447,13 +447,15 @@ export const works = [
     org: '관악문화재단',
     period: '2020',
     summary: '관악문화재단 축제지원팀 인턴',
-    description: '관악문화재단 축제지원팀에서 인턴으로 근무했다.',
+    description: '관악문화재단 축제지원팀에서 인턴으로 근무했다.\n\n관악문화재단은 이름처럼 관악산 자락 바로 아래에 위치하고 있다. 출퇴근하면서 산과 나무를 많이 봤다. 계절이 오는 걸 가장 가까이에서 보는 기분이었다. 업무 사진은 많이 없지만 나무는 오며 가며 참 많이도 찍었다.',
     role: ['인턴'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/gwanak-foundation.jpg',
+    coverRatio: '1170 / 878',
+    coverMaxWidth: '560px',
     color: '#c06a3a',
-    images: []
+    images: [{ src: '/works/gwanak-foundation-2.jpg', maxWidth: '520px' }, { src: '/works/gwanak-foundation-3.jpg', maxWidth: '520px' }, { src: '/works/gwanak-foundation-4.jpg', maxWidth: '520px' }, { src: '/works/gwanak-foundation-5.jpg', maxWidth: '520px' }, { src: '/works/gwanak-foundation-6.jpg', maxWidth: '520px' }, { src: '/works/gwanak-foundation-7.jpg', maxWidth: '520px' }, { src: '/works/gwanak-foundation-8.jpg', maxWidth: '560px' }]
   },
   {
     id: 'kookmin-publishing-intern',
