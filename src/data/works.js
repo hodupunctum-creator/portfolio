@@ -370,18 +370,20 @@ export const works = [
   {
     id: 'ku-sejong-newsletter',
     title: 'KU세종 48호, 49호, 2024 영문 소식지',
-    tag: '업무',
+    tag: '소식지',
     category: 'other',
     org: '내일날씨',
-    period: '',
-    summary: 'KU세종 48호, 49호, 2024 영문 소식지 제작',
-    description: 'KU세종 48호, 49호, 2024 영문 소식지 제작',
-    role: ['프로젝트 PM, 편집, 교정교열'],
+    period: '2023 ~ 2024',
+    summary: '고려대학교 세종캠퍼스 소식지 KU세종 48호, 49호, 영문 소식지 PM, 교정교열, 편집',
+    description: '고려대학교에서 발간하는 소식지 48호, 49호, 2024 영문 소식지의 PM을 맡았다. 교정교열과 편집을 함께 진행했다.',
+    role: ['프로젝트 PM', '교정교열', '편집'],
     outcome: [],
     links: [],
-    cover: '',
-    color: '#2b2730',
-    images: []
+    cover: '/works/ku-sejong.jpg',
+    coverRatio: '898 / 1182',
+    coverMaxWidth: '440px',
+    color: '#8a1a2b',
+    images: [{ heading: '48호 (2023)' }, '/works/ku-sejong-48-1.jpg', '/works/ku-sejong-48-2.jpg', '/works/ku-sejong-48-3.jpg', { heading: '49호 (2024)' }, '/works/ku-sejong-49-1.jpg', '/works/ku-sejong-49-2.jpg', '/works/ku-sejong-49-3.jpg', { heading: '영문 소식지 Vol.08 (2024)' }, '/works/ku-sejong-en-1.jpg', '/works/ku-sejong-en-2.jpg', '/works/ku-sejong-en-3.jpg']
   },
   {
     id: 'chungho-people',
