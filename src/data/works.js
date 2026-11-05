@@ -406,18 +406,20 @@ export const works = [
   {
     id: 'agri-tech-guide',
     title: '농업기술길잡이 12종',
-    tag: '업무',
+    tag: '교재 시리즈',
     category: 'other',
     org: '내일날씨',
     period: '',
-    summary: '농업기술길잡이 12종 교정교열',
-    description: '농업기술길잡이 12종 교정교열',
-    role: ['교정교열, 디자인 검수'],
+    summary: '농촌진흥청 작물별 표준 영농 교재 농업기술길잡이 12종 교정교열 및 디자인 검수',
+    description: "농촌진흥청에서 발간하는 작물별 표준 영농 교재인 '농업기술길잡이' 12종의 교정교열 및 디자인 검수를 진행했다.",
+    role: ['교정교열', '디자인 검수'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/agri-tech-guide.jpg',
+    coverRatio: '1400 / 1560',
+    coverMaxWidth: '560px',
     color: '#8a1a2b',
-    images: []
+    images: ['/works/agri-tech-guide-1.jpg', '/works/agri-tech-guide-2.jpg', '/works/agri-tech-guide-3.jpg', '/works/agri-tech-guide-4.jpg', '/works/agri-tech-guide-5.jpg', '/works/agri-tech-guide-6.jpg', '/works/agri-tech-guide-7.jpg']
   },
   {
     id: 'buyeo-art-fair-staff',
