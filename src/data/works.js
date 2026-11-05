@@ -433,9 +433,11 @@ export const works = [
     role: ['현장 운영 스태프'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/buyeo-art-fair.jpg',
+    coverRatio: '1170 / 1560',
+    coverMaxWidth: '440px',
     color: '#5c1420',
-    images: []
+    images: [{ src: '/works/buyeo-art-fair-2.jpg', maxWidth: '440px' }, { src: '/works/buyeo-art-fair-3.jpg', maxWidth: '440px' }, { src: '/works/buyeo-art-fair-4.jpg', maxWidth: '440px' }, { src: '/works/buyeo-art-fair-5.jpg', maxWidth: '440px' }, { src: '/works/buyeo-art-fair-6.jpg', maxWidth: '440px' }]
   },
   {
     id: 'gwanak-festival-intern',
