@@ -304,7 +304,7 @@ export const works = [
     title: '마음로그인 34호',
     tag: '매거진',
     category: 'other',
-    org: '국립정신건강센터',
+    org: '위닷',
     period: '2026',
     summary: '국립정신건강센터 정신건강 소식지 마음로그인 34호 PM, 교정교열, 편집',
     description: '국립정신건강센터에서 발행하는 매거진인 마음로그인 34호에 PM으로 참여했다. 교정교열과 편집을 함께 맡았다.',
