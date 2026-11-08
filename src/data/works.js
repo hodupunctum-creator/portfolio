@@ -319,19 +319,20 @@ export const works = [
   },
   {
     id: 'food-nuri-cardnews',
-    title: '농식품정보누리 카드뉴스',
-    tag: '카드뉴스',
+    title: '농식품정보누리 인스타그램 콘텐츠 제작',
+    tag: 'SNS 콘텐츠',
     category: 'other',
     org: '',
     period: '',
-    summary: '농식품정보누리 카드뉴스 원고 작성 및 교정',
-    description: '농식품정보누리의 카드뉴스와 인스타그램 콘텐츠 원고를 쓰고 교정했다.',
-    role: ['원고 작성, 교정교열'],
+    summary: '농식품정보누리 인스타그램 카드뉴스와 릴스 콘텐츠 제작',
+    description: '농식품정보누리의 카드뉴스와 릴스 콘텐츠를 제작했다.',
+    role: ['카드뉴스 제작', '릴스 제작'],
     outcome: [],
-    links: [],
-    cover: '',
+    links: [{ label: '농식품정보누리 인스타그램', url: 'https://www.instagram.com/foodnuri/' }],
+    cover: '/works/food-nuri.jpg',
+    coverRatio: '1400 / 1005',
     color: '#5e8a4f',
-    images: []
+    images: ['/works/food-nuri-2.jpg', '/works/food-nuri-3.jpg', '/works/food-nuri-4.jpg']
   },
   {
     id: 'public-youtube',
