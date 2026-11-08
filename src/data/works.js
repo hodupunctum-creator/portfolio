@@ -322,7 +322,7 @@ export const works = [
     title: '농식품정보누리 인스타그램 콘텐츠 제작',
     tag: 'SNS 콘텐츠',
     category: 'other',
-    org: '',
+    org: '위닷',
     period: '',
     summary: '농식품정보누리 인스타그램 카드뉴스와 릴스 콘텐츠 제작',
     description: '농식품정보누리의 카드뉴스와 릴스 콘텐츠를 제작했다.',
