@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { categories, orderedWorks } from '../data/works';
+import { categories, groups, orderedWorks } from '../data/works';
 
 export const pad = n => String(n).padStart(2, '0');
 
@@ -92,25 +92,36 @@ export default function Works() {
       <div className="split">
         <aside className="split-aside" ref={asideRef}>
           <div className="work-index">
-            {categories.map(category => (
-              <section key={category.id} className="work-index-group">
-                <h2 className={`work-index-title${current.category === category.id ? ' is-active' : ''}`}>
-                  {category.label}
-                </h2>
-                <ol>
-                  {orderedWorks.map((work, i) =>
-                    work.category === category.id ? (
-                      <li key={work.id}>
-                        <button className={i === active ? 'is-active' : ''} onClick={() => jumpTo(i)}>
-                          {pad(work.number)}. {work.title}
-                        </button>
-                      </li>
-                    ) : null
-                  )}
-                </ol>
-                {/* 마지막 목록(기타 활동) 바로 아래의 작은 그라데이션 원. 지금 보는 작품의 구분에 따라 색이 바뀝니다. */}
-                {category.id === categories[categories.length - 1].id && (
-                  <div className="index-orbs" data-category={current.category} aria-hidden="true">
+            {groups.map((group, g) => (
+              <div key={group.id} className="work-index-col">
+                {categories
+                  .filter(category => category.group === group.id)
+                  .map(category => (
+                    <section key={category.id} className="work-index-group">
+                      <h2 className={`work-index-title${current.category === category.id ? ' is-active' : ''}`}>
+                        {category.label}
+                        <span className="work-index-title-en">{category.labelEn}</span>
+                      </h2>
+                      <ol>
+                        {orderedWorks.map((work, i) =>
+                          work.category === category.id ? (
+                            <li key={work.id}>
+                              <button className={i === active ? 'is-active' : ''} onClick={() => jumpTo(i)}>
+                                {pad(work.number)}. {work.title}
+                              </button>
+                            </li>
+                          ) : null
+                        )}
+                      </ol>
+                    </section>
+                  ))}
+                {/* 오른쪽(업무) 칸 맨 아래의 작은 그라데이션 원. 지금 보는 작품이 창작인지 업무인지에 따라 색이 바뀝니다. */}
+                {g === groups.length - 1 && (
+                  <div
+                    className="index-orbs"
+                    data-category={current.group === 'work' ? 'other' : 'creative'}
+                    aria-hidden="true"
+                  >
                     <div className="index-orb index-orb--big">
                       <i className="orb-grain" />
                     </div>
@@ -119,7 +130,7 @@ export default function Works() {
                     </div>
                   </div>
                 )}
-              </section>
+              </div>
             ))}
           </div>
         </aside>
@@ -127,7 +138,12 @@ export default function Works() {
         <div className="split-main">
           {orderedWorks.map((work, i) => (
             <div key={work.id} className="work-slide-wrap">
-              {work.number === 1 && <h2 className="work-group-title label">{work.categoryLabel}</h2>}
+              {work.number === 1 && (
+                <h2 className="work-group-title label">
+                  {work.categoryLabel}
+                  <span className="work-index-title-en">{work.categoryLabelEn}</span>
+                </h2>
+              )}
               <Link
                 to={`/works/${work.id}`}
                 className="work-slide"

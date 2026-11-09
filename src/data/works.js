@@ -2,7 +2,7 @@
 // 여기에 작품을 추가·수정하면 목록과 상세 페이지에 바로 반영됩니다.
 // - id: 주소에 쓰이는 고유값 (/works/:id)
 // - tag: 노션 제목 앞의 [ ] 분류
-// - category: 'creative'(창작활동) 또는 'other'(기타 활동). 목록에서 이 순서대로 묶이고 번호도 카테고리마다 01부터 매겨집니다.
+// - category: 파일 맨 아래 categories의 id (fiction, prose, photo, project, editing, content, field). 번호는 카테고리마다 01부터 매겨집니다.
 // - org: 소속 / period: 진행 기간 (노션에 적힌 경우만)
 // - description: 상세 페이지 본문. 문단 사이는 \n\n(빈 줄), 문단 안에서 줄만 바꿀 때는 \n.
 //          구분선을 넣으려면 빈 줄 사이에 --- 만 적습니다 (예: '첫 문단\n\n---\n\n다음 문단').
@@ -23,7 +23,7 @@ export const works = [
     id: 'winter-island-reading',
     title: '작은 공연이 열리는 겨울섬',
     tag: '낭독',
-    category: 'creative',
+    category: 'fiction',
     org: '',
     period: '2025.12',
     summary: '\'작은 공연이 열리는 겨울섬\'에서 단편소설 <단추가 놓인 자리> 낭독',
@@ -40,7 +40,7 @@ export const works = [
     id: 'qyeon-1',
     title: '<큐연> 1호',
     tag: '잡지 공저',
-    category: 'creative',
+    category: 'fiction',
     org: '큐연',
     period: '2023.07',
     summary: '퀴어 문학을 담는 비정기 간행물 <큐연> 1호에 단편소설 <여름에게> 게재',
@@ -56,7 +56,7 @@ export const works = [
     id: 'dajaedapil-1',
     title: '다재다필 1기 작품선',
     tag: '작품집 공저',
-    category: 'creative',
+    category: 'fiction',
     org: '창작집단 다재다필',
     period: '2024.10 ~ 2025.01',
     summary: '창작집단 다재다필 1기 참여, 단편소설 <참새와 정숙의 밤> 집필 및 작품집 발간',
@@ -73,7 +73,7 @@ export const works = [
     id: 'yeonhui-residency-2023',
     title: '2023 연희문학창작촌 청년예비작가',
     tag: '입주 작가',
-    category: 'creative',
+    category: 'fiction',
     org: '연희문학창작촌',
     period: '2023.04 ~ 05',
     summary: '2023 연희문학창작촌 청년예비작가 선정, 한 달간 입주해 단편소설 <식물원의 빛> 집필',
@@ -88,10 +88,28 @@ export const works = [
     images: ['/works/yeonhui-residency-2.jpg', '/works/yeonhui-residency-3.jpg']
   },
   {
+    id: 'the-meolli-ghost',
+    title: '독립잡지 <더 멀리>',
+    tag: '독립잡지 더멀리',
+    category: 'fiction',
+    org: '더멀리',
+    period: '2017.02',
+    summary: '독립잡지 <더 멀리> 12호에 엽편 소설 <춤추는 미술관의 유령> 게재',
+    description: '2017년 재학 당시에 썼던 단편소설 <춤추는 미술관의 유령>의 일부를 편집하여 독립잡지 <더 멀리> 12호에 엽편 소설로 투고하였고, 게재되었다.\n\n처음으로 소설이 게재된 경험이었으며, 낯선 독자가 내 소설을 읽는다는 생각에 잠 못 이뤘던 기억이 있다.',
+    role: ['엽편 소설 <춤추는 미술관의 유령> 집필'],
+    outcome: [],
+    links: [],
+    cover: '/works/the-meolli.jpg',
+    coverRatio: '1 / 1',
+    coverMaxWidth: '560px',
+    color: '#5c1420',
+    images: [{ src: '/works/the-meolli-2.jpg', maxWidth: '560px' }]
+  },
+  {
     id: 'endless-crumbs',
     title: '두고 온 것들의 끝없는 부스러기',
     tag: '개인 작업',
-    category: 'creative',
+    category: 'prose',
     org: '개인',
     period: '2021.01 ~ 2021.12',
     summary: '2019년 북유럽 여행의 일기와 사진을 엮은 포토 여행 에세이 제작',
@@ -108,7 +126,7 @@ export const works = [
     id: 'gwanak-planner-diary',
     title: '초보문화기획자의 근무일지 : 도와줘요! 기획요정',
     tag: '업무',
-    category: 'creative',
+    category: 'prose',
     org: '관악문화재단',
     period: '2020.06 ~ 2020.12',
     summary: '초보 문화 기획자가 쓰는 에세이 형식의 근무일지. 초보 문화 기획자의 시선으로 <N개의 서울> 사업을 기록함',
@@ -126,7 +144,7 @@ export const works = [
     id: 'female-detective-anthology',
     title: '여자-형사와 그 변주들',
     tag: '문집',
-    category: 'creative',
+    category: 'prose',
     org: '책방 달리봄',
     period: '2020.4 ~ 2020.12',
     summary: '페미니즘 장르영화 비평 <여자-형사와 그 변주들> 강의에 참여한 수강생의 비평을 엮은 비평집',
@@ -141,45 +159,10 @@ export const works = [
     images: [{ src: '/works/female-detective-2.jpg', maxWidth: '560px' }]
   },
   {
-    id: 'the-meolli-ghost',
-    title: '독립잡지 <더 멀리>',
-    tag: '독립잡지 더멀리',
-    category: 'creative',
-    org: '더멀리',
-    period: '2017.02',
-    summary: '독립잡지 <더 멀리> 12호에 엽편 소설 <춤추는 미술관의 유령> 게재',
-    description: '2017년 재학 당시에 썼던 단편소설 <춤추는 미술관의 유령>의 일부를 편집하여 독립잡지 <더 멀리> 12호에 엽편 소설로 투고하였고, 게재되었다.\n\n처음으로 소설이 게재된 경험이었으며, 낯선 독자가 내 소설을 읽는다는 생각에 잠 못 이뤘던 기억이 있다.',
-    role: ['엽편 소설 <춤추는 미술관의 유령> 집필'],
-    outcome: [],
-    links: [],
-    cover: '/works/the-meolli.jpg',
-    coverRatio: '1 / 1',
-    coverMaxWidth: '560px',
-    color: '#5c1420',
-    images: [{ src: '/works/the-meolli-2.jpg', maxWidth: '560px' }]
-  },
-  {
-    id: 'project-112',
-    title: '112 프로젝트',
-    tag: '당신을 위한 책 추천',
-    category: 'creative',
-    org: '두잇커뮤니티',
-    period: '2021.01 ~ 2021.12',
-    summary: '각 달마다 중요한 날을 꼽아 그에 맞는 책을 읽고, 10~11개의 질문을 생성함. 질문을 통해 토론을 진행함',
-    description: '금천구의 청춘삘딩에서 진행한 커뮤니티 지원사업에 독서모임으로 참여했다. 매달 기념일 중 하나를 꼽아 그에 맞는 책을 읽고, 각자 뽑아온 질문을 바탕으로 토론을 진행했다.\n\n사업 결과물로 만든 것은 당신을 위한 책 추천이라는 내용을 담은 가이드북이다. 독서모임 때 나눴던 질문을 바탕으로 독서모임에 참여하고 싶지만 수줍은 사람, 책을 어떻게 읽어야 할지 어려운 사람, 코로나 시대에 대면 독서모임에 참여하기 어려운 사람 등을 타겟으로 독서 길잡이 가이드북을 만들었다.',
-    role: ['구성 및 기획, 회계, 원고작성, 서기를 담당함'],
-    outcome: [],
-    links: [],
-    cover: '/works/project-112.jpg',
-    coverRatio: '1170 / 878',
-    color: '#8a1a2b',
-    images: [{ src: '/works/project-112-2.jpg', maxWidth: '750px' }]
-  },
-  {
     id: 'gwanak-youth-hospitality',
     title: '환대의 감각',
     tag: '관악청년교류단',
-    category: 'creative',
+    category: 'prose',
     org: '관악문화재단',
     period: '2021.08',
     summary: '[관악청년교류단]에 참여하며, 느꼈던 지역 문화에 대한 이해를 개인적 에세이로 풀어냄',
@@ -197,7 +180,7 @@ export const works = [
     id: 'yeoreumnun',
     title: '여름눈 앨범 커버 사진 및 소개글',
     tag: '여름눈',
-    category: 'creative',
+    category: 'photo',
     org: '개인',
     period: '2022.10 ~ 2025.12',
     summary: '밴드 여름눈의 싱글 <남쪽 바람이 불면>, <이별발자국>, <유빙> 커버 사진 및 <이별발자국> 곡 소개글 집필',
@@ -233,7 +216,7 @@ export const works = [
     id: 'cake-cutting',
     title: '케이크 잘라먹기',
     tag: '인물 사진',
-    category: 'creative',
+    category: 'photo',
     org: '개인',
     period: '',
     summary: '사람의 얼굴에 찰나로 스치는 표정을 들여다본 인물 사진 작업',
@@ -252,7 +235,7 @@ export const works = [
     id: 'moni-photo-exhibition',
     title: '네 이름은 모니?',
     tag: '개인 사진전',
-    category: 'creative',
+    category: 'photo',
     org: '개인',
     period: '2022.09.09 ~ 2022.10.31',
     summary: '친구가 임시보호하던 강아지 모니의 입양 홍보를 위해 카페 푸르토아에서 연 사진전',
@@ -269,7 +252,7 @@ export const works = [
     id: '500photographs',
     title: '500photographs’ 프로젝트',
     tag: '사진전',
-    category: 'creative',
+    category: 'photo',
     org: '291 포토그랩스',
     period: '2021.06 ~ 진행중',
     summary: '291포토그랩스 500photographs’ 프로젝트에 사진 작가로 참여 중',
@@ -284,10 +267,27 @@ export const works = [
     images: [{ src: '/works/500photographs-2.jpg', maxWidth: '440px' }, { src: '/works/500photographs-3.jpg', maxWidth: '440px' }]
   },
   {
+    id: 'project-112',
+    title: '112 프로젝트',
+    tag: '당신을 위한 책 추천',
+    category: 'project',
+    org: '두잇커뮤니티',
+    period: '2021.01 ~ 2021.12',
+    summary: '각 달마다 중요한 날을 꼽아 그에 맞는 책을 읽고, 10~11개의 질문을 생성함. 질문을 통해 토론을 진행함',
+    description: '금천구의 청춘삘딩에서 진행한 커뮤니티 지원사업에 독서모임으로 참여했다. 매달 기념일 중 하나를 꼽아 그에 맞는 책을 읽고, 각자 뽑아온 질문을 바탕으로 토론을 진행했다.\n\n사업 결과물로 만든 것은 당신을 위한 책 추천이라는 내용을 담은 가이드북이다. 독서모임 때 나눴던 질문을 바탕으로 독서모임에 참여하고 싶지만 수줍은 사람, 책을 어떻게 읽어야 할지 어려운 사람, 코로나 시대에 대면 독서모임에 참여하기 어려운 사람 등을 타겟으로 독서 길잡이 가이드북을 만들었다.',
+    role: ['구성 및 기획, 회계, 원고작성, 서기를 담당함'],
+    outcome: [],
+    links: [],
+    cover: '/works/project-112.jpg',
+    coverRatio: '1170 / 878',
+    color: '#8a1a2b',
+    images: [{ src: '/works/project-112-2.jpg', maxWidth: '750px' }]
+  },
+  {
     id: 'geoq-3-4',
     title: '공간정보 매거진 GeoQ 3, 4호',
     tag: '매거진',
-    category: 'other',
+    category: 'editing',
     org: '위닷',
     period: '2026',
     summary: '공간정보품질관리원 매거진 GeoQ 3, 4호 기획 및 편집',
@@ -303,7 +303,7 @@ export const works = [
     id: 'maeum-login-34',
     title: '마음로그인 34호',
     tag: '매거진',
-    category: 'other',
+    category: 'editing',
     org: '위닷',
     period: '2026',
     summary: '국립정신건강센터 정신건강 소식지 마음로그인 34호 PM, 교정교열, 편집',
@@ -318,43 +318,10 @@ export const works = [
     images: ['/works/maeum-login-2.jpg', '/works/maeum-login-3.jpg']
   },
   {
-    id: 'food-nuri-cardnews',
-    title: '농식품정보누리 인스타그램 콘텐츠 제작',
-    tag: 'SNS 콘텐츠',
-    category: 'other',
-    org: '위닷',
-    period: '',
-    summary: '농식품정보누리 인스타그램 카드뉴스와 릴스 콘텐츠 제작',
-    description: '농식품정보누리의 카드뉴스와 릴스 콘텐츠를 제작했다.',
-    role: ['카드뉴스 제작', '릴스 제작'],
-    outcome: [],
-    links: [{ label: '농식품정보누리 인스타그램', url: 'https://www.instagram.com/foodnuri/' }],
-    cover: '/works/food-nuri.jpg',
-    coverRatio: '1400 / 1005',
-    color: '#5e8a4f',
-    images: ['/works/food-nuri-2.jpg', '/works/food-nuri-3.jpg', '/works/food-nuri-4.jpg']
-  },
-  {
-    id: 'public-youtube',
-    title: '공공기관 유튜브 채널 운영 및 기획',
-    tag: '유튜브',
-    category: 'other',
-    org: '',
-    period: '',
-    summary: '공공기관 유튜브 채널 운영 및 기획',
-    description: '공공기관 유튜브 채널을 운영하고 콘텐츠를 기획했다.',
-    role: ['채널 운영, 콘텐츠 기획'],
-    outcome: [],
-    links: [],
-    cover: '',
-    color: '#a03a3a',
-    images: []
-  },
-  {
     id: 'digital-education-whitepaper-2023',
     title: '2023 디지털교육백서',
     tag: '백서',
-    category: 'other',
+    category: 'editing',
     org: '내일날씨',
     period: '2023',
     summary: '한국교육학술정보원 2023 디지털교육백서 국문, 영문 PM, 교정교열, 편집',
@@ -372,7 +339,7 @@ export const works = [
     id: 'ku-sejong-newsletter',
     title: 'KU세종 48호, 49호, 2024 영문 소식지',
     tag: '소식지',
-    category: 'other',
+    category: 'editing',
     org: '내일날씨',
     period: '2023 ~ 2024',
     summary: '고려대학교 세종캠퍼스 소식지 KU세종 48호, 49호, 영문 소식지 PM, 교정교열, 편집',
@@ -390,7 +357,7 @@ export const works = [
     id: 'chungho-people',
     title: '청호피플 338호, 339호',
     tag: '사보',
-    category: 'other',
+    category: 'editing',
     org: '내일날씨',
     period: '2024',
     summary: '청호나이스 사보 청호피플 338호, 339호 취재 및 원고 작성',
@@ -408,7 +375,7 @@ export const works = [
     id: 'agri-tech-guide',
     title: '농업기술길잡이 12종',
     tag: '교재 시리즈',
-    category: 'other',
+    category: 'editing',
     org: '내일날씨',
     period: '',
     summary: '농촌진흥청 작물별 표준 영농 교재 농업기술길잡이 12종 교정교열 및 디자인 검수',
@@ -423,10 +390,59 @@ export const works = [
     images: ['/works/agri-tech-guide-1.jpg', '/works/agri-tech-guide-2.jpg', '/works/agri-tech-guide-3.jpg', '/works/agri-tech-guide-4.jpg', '/works/agri-tech-guide-5.jpg', '/works/agri-tech-guide-6.jpg', '/works/agri-tech-guide-7.jpg']
   },
   {
+    id: 'food-nuri-cardnews',
+    title: '농식품정보누리 인스타그램 콘텐츠 제작',
+    tag: 'SNS 콘텐츠',
+    category: 'content',
+    org: '위닷',
+    period: '',
+    summary: '농식품정보누리 인스타그램 카드뉴스와 릴스 콘텐츠 제작',
+    description: '농식품정보누리의 카드뉴스와 릴스 콘텐츠를 제작했다.',
+    role: ['카드뉴스 제작', '릴스 제작'],
+    outcome: [],
+    links: [{ label: '농식품정보누리 인스타그램', url: 'https://www.instagram.com/foodnuri/' }],
+    cover: '/works/food-nuri.jpg',
+    coverRatio: '1400 / 1005',
+    color: '#5e8a4f',
+    images: ['/works/food-nuri-2.jpg', '/works/food-nuri-3.jpg', '/works/food-nuri-4.jpg']
+  },
+  {
+    id: 'public-youtube',
+    title: '공공기관 유튜브 채널 운영 및 기획',
+    tag: '유튜브',
+    category: 'content',
+    org: '',
+    period: '',
+    summary: '공공기관 유튜브 채널 운영 및 기획',
+    description: '공공기관 유튜브 채널을 운영하고 콘텐츠를 기획했다.',
+    role: ['채널 운영, 콘텐츠 기획'],
+    outcome: [],
+    links: [],
+    cover: '',
+    color: '#a03a3a',
+    images: []
+  },
+  {
+    id: 'podcast-what-do-you-do',
+    title: '<뭐하고 사세요? 35회차>',
+    tag: '팟캐스트',
+    category: 'content',
+    org: '개인',
+    period: '2022.07.01',
+    summary: '[좀좀따리리좀]의 팟캐스트 <뭐하고 사세요?> 시리즈에 게스트로 참여함',
+    description: '[좀좀따리리좀]의 팟캐스트 <뭐하고 사세요?> 시리즈에 게스트로 참여함',
+    role: ['‘뭐 하고 사세요?’, ‘뭘 쓰며 사세요?’, ‘뭐 하고 살고 싶으세요?’라는 세 가지 주제로 이야기를 나눔'],
+    outcome: ['약 한 시간 십 분 동안의 이야기를 나눔'],
+    links: [],
+    cover: '',
+    color: '#3d3a40',
+    images: []
+  },
+  {
     id: 'buyeo-art-fair-staff',
     title: '부여 아트페어 현장 운영 스태프',
     tag: '현장 운영',
-    category: 'other',
+    category: 'field',
     org: '부여 아트페어',
     period: '2021.09.03 ~ 09.12',
     summary: '부여 아트페어 현장 운영 스태프',
@@ -444,7 +460,7 @@ export const works = [
     id: 'gwanak-festival-intern',
     title: '관악문화재단 축제지원팀 인턴',
     tag: '인턴',
-    category: 'other',
+    category: 'field',
     org: '관악문화재단',
     period: '2020',
     summary: '관악문화재단 축제지원팀 인턴',
@@ -462,7 +478,7 @@ export const works = [
     id: 'kookmin-publishing-intern',
     title: '국민출판사 인턴',
     tag: '인턴',
-    category: 'other',
+    category: 'field',
     org: '국민출판사',
     period: '2015.12 ~ 2016.01',
     summary: '서울예술대학교 재학 중 현장실습으로 국민출판사 인턴, 블로그 운영',
@@ -474,34 +490,36 @@ export const works = [
     coverRatio: '1170 / 878',
     color: '#2b2730',
     images: []
-  },
-  {
-    id: 'podcast-what-do-you-do',
-    title: '<뭐하고 사세요? 35회차>',
-    tag: '팟캐스트',
-    category: 'other',
-    org: '개인',
-    period: '2022.07.01',
-    summary: '[좀좀따리리좀]의 팟캐스트 <뭐하고 사세요?> 시리즈에 게스트로 참여함',
-    description: '[좀좀따리리좀]의 팟캐스트 <뭐하고 사세요?> 시리즈에 게스트로 참여함',
-    role: ['‘뭐 하고 사세요?’, ‘뭘 쓰며 사세요?’, ‘뭐 하고 살고 싶으세요?’라는 세 가지 주제로 이야기를 나눔'],
-    outcome: ['약 한 시간 십 분 동안의 이야기를 나눔'],
-    links: [],
-    cover: '',
-    color: '#3d3a40',
-    images: []
   }
 ];
 
-// 카테고리 정의. 순서대로 목록에 표시됩니다.
+// 카테고리 정의. group(창작/업무)별로 목록의 왼쪽·오른쪽 칸에 나뉘고, 적힌 순서대로 표시됩니다.
+// 작품의 category에는 아래 id 중 하나를 적습니다.
+export const groups = [
+  { id: 'creative', label: '창작', labelEn: 'Creative' },
+  { id: 'work', label: '업무', labelEn: 'Work' }
+];
+
 export const categories = [
-  { id: 'creative', label: '창작활동' },
-  { id: 'other', label: '기타 활동' }
+  { id: 'fiction', group: 'creative', label: '소설', labelEn: 'Fiction' },
+  { id: 'prose', group: 'creative', label: '산문', labelEn: 'Essay & Criticism' },
+  { id: 'photo', group: 'creative', label: '사진', labelEn: 'Photography' },
+  { id: 'project', group: 'creative', label: '프로젝트', labelEn: 'Project' },
+  { id: 'editing', group: 'work', label: '편집', labelEn: 'Editing' },
+  { id: 'content', group: 'work', label: '콘텐츠 운영', labelEn: 'Content' },
+  { id: 'field', group: 'work', label: '인턴·현장', labelEn: 'Internship & Field' }
 ];
 
 // 카테고리 순서로 정렬한 작품 목록 (각 작품에 카테고리 안에서의 번호 number를 붙임)
 export const orderedWorks = categories.flatMap(category =>
   works
     .filter(work => work.category === category.id)
-    .map((work, i, list) => ({ ...work, number: i + 1, categoryLabel: category.label, categoryTotal: list.length }))
+    .map((work, i, list) => ({
+      ...work,
+      number: i + 1,
+      group: category.group,
+      categoryLabel: category.label,
+      categoryLabelEn: category.labelEn,
+      categoryTotal: list.length
+    }))
 );

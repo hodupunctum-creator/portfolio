@@ -342,14 +342,45 @@ img {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+}
+
+.work-index-col {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  min-width: 0;
 }
 
 .work-index-title {
-  margin: 0 0 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 12px;
+  margin: 0 0 14px;
   font-size: var(--text-s);
   font-weight: 600;
   color: var(--muted);
+}
+
+/* 분류의 영어 이름: 한글 분류명 오른쪽 끝에 작게 */
+.work-index-title-en {
+  font-weight: 400;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.work-group-title {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 12px;
+}
+
+/* 제목 위의 짧은 선은 한 줄을 다 차지하도록 */
+.work-index-title::before,
+.work-group-title::before {
+  grid-column: 1 / -1;
 }
 
 .index-orbs {
