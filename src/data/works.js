@@ -423,22 +423,6 @@ export const works = [
     images: []
   },
   {
-    id: 'podcast-what-do-you-do',
-    title: '<뭐하고 사세요? 35회차>',
-    tag: '팟캐스트',
-    category: 'content',
-    org: '개인',
-    period: '2022.07.01',
-    summary: '[좀좀따리리좀]의 팟캐스트 <뭐하고 사세요?> 시리즈에 게스트로 참여함',
-    description: '[좀좀따리리좀]의 팟캐스트 <뭐하고 사세요?> 시리즈에 게스트로 참여함',
-    role: ['‘뭐 하고 사세요?’, ‘뭘 쓰며 사세요?’, ‘뭐 하고 살고 싶으세요?’라는 세 가지 주제로 이야기를 나눔'],
-    outcome: ['약 한 시간 십 분 동안의 이야기를 나눔'],
-    links: [],
-    cover: '',
-    color: '#3d3a40',
-    images: []
-  },
-  {
     id: 'buyeo-art-fair-staff',
     title: '부여 아트페어 현장 운영 스태프',
     tag: '현장 운영',
