@@ -295,9 +295,11 @@ export const works = [
     role: ['기획, 편집, 원고 작성', '인터뷰·외부 필자 원고·취재 코디네이션'],
     outcome: [],
     links: [],
-    cover: '',
+    cover: '/works/geoq.jpg',
+    coverRatio: '588 / 773',
+    coverMaxWidth: '440px',
     color: '#3f6b8f',
-    images: []
+    images: [{ heading: '3호 국문' }, { src: '/works/geoq-3-ko-1.jpg', maxWidth: '440px' }, '/works/geoq-3-ko-2.jpg', '/works/geoq-3-ko-3.jpg', '/works/geoq-3-ko-4.jpg', '/works/geoq-3-ko-5.jpg', '/works/geoq-3-ko-6.jpg', { heading: '3호 영문' }, { src: '/works/geoq-3-en-1.jpg', maxWidth: '440px' }, '/works/geoq-3-en-2.jpg', '/works/geoq-3-en-3.jpg', '/works/geoq-3-en-4.jpg']
   },
   {
     id: 'maeum-login-34',
