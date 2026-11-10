@@ -1,7 +1,11 @@
 // 작은 그라데이션 원이 커서를 살짝 늦게 따라옵니다. 링크·버튼 위에서는 조금 커집니다.
+// data-cursor="보기"처럼 적힌 요소 위에서는 원이 크게 부풀고 그 글자가 원 안에 나타납니다.
 // 휴대폰에서는 손가락으로 화면을 쓸어 스크롤하는 동안 손가락을 따라오고, 손을 떼면 사라집니다.
 
 export function startCursorOrb(el, { ease = 0.16 } = {}) {
+  const dot = el.querySelector('.cursor-orb-dot') || el;
+  const label = el.querySelector('.cursor-orb-label');
+  let mode = '';
   let tx = -100;
   let ty = -100;
   let x = tx;
@@ -15,7 +19,8 @@ export function startCursorOrb(el, { ease = 0.16 } = {}) {
     x += (tx - x) * ease;
     y += (ty - y) * ease;
     scale += (targetScale - scale) * 0.15;
-    el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${scale})`;
+    el.style.transform = `translate(${x}px, ${y}px)`;
+    dot.style.transform = `translate(-50%, -50%) scale(${scale})`;
     const still = Math.abs(tx - x) < 0.1 && Math.abs(ty - y) < 0.1 && Math.abs(targetScale - scale) < 0.001;
     raf = still ? 0 : requestAnimationFrame(tick);
   };
@@ -33,12 +38,22 @@ export function startCursorOrb(el, { ease = 0.16 } = {}) {
       y = ty;
       el.style.opacity = '1';
     }
-    targetScale = e.target.closest && e.target.closest('a, button') ? 1.9 : 1;
+    const view = e.target.closest && e.target.closest('[data-cursor]');
+    const next = view ? view.dataset.cursor : '';
+    if (next !== mode) {
+      mode = next;
+      el.classList.toggle('is-view', Boolean(mode));
+      if (label && mode) label.textContent = mode;
+    }
+    targetScale = mode ? 4.4 : e.target.closest && e.target.closest('a, button') ? 1.9 : 1;
     wake();
   };
   const onLeave = () => {
     visible = false;
     el.style.opacity = '0';
+    mode = '';
+    el.classList.remove('is-view');
+    targetScale = 1;
   };
 
   let hideTimer = 0;

@@ -13,5 +13,10 @@ export default function CursorOrb() {
     return startCursorOrb(ref.current);
   }, []);
 
-  return <div ref={ref} className="cursor-orb" aria-hidden="true" />;
+  return (
+    <div ref={ref} className="cursor-orb" aria-hidden="true">
+      <span className="cursor-orb-dot" />
+      <span className="cursor-orb-label" />
+    </div>
+  );
 }

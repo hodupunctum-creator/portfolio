@@ -70,25 +70,60 @@
   }
 }
 
-/* 커서를 따라오는 작은 그라데이션 원 (CursorOrb) */
+/* 커서를 따라오는 작은 그라데이션 원 (CursorOrb)
+   바깥(.cursor-orb)은 위치만, 안쪽 원(.cursor-orb-dot)은 크기만 움직입니다. */
 .cursor-orb {
   position: fixed;
   top: 0;
   left: 0;
-  width: 22px;
-  height: 22px;
+  width: 0;
+  height: 0;
   z-index: 60;
-  border-radius: 50%;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.cursor-orb-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
   background: radial-gradient(circle at 36% 64%, #e5283f 0%, #ec4a5c 42%, rgba(242, 130, 146, 0.45) 60%, rgba(246, 168, 178, 0) 72%);
   mix-blend-mode: multiply;
+  transition: background 0.25s ease;
+}
+
+/* 작업 사진 위: 원이 크게 부풀고 '보기' 글자가 나타납니다 */
+.cursor-orb-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  font-size: var(--text-s);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+.cursor-orb.is-view .cursor-orb-dot {
+  background: radial-gradient(circle at 40% 60%, #e5283f 0%, #ea3f53 48%, rgba(236, 74, 92, 0.92) 64%, rgba(240, 112, 128, 0) 72%);
+  mix-blend-mode: normal;
+}
+
+.cursor-orb.is-view .cursor-orb-label {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* 휴대폰: 손가락 끝에 가려지지 않게 조금 더 크게 */
 @media (hover: none) {
-  .cursor-orb {
+  .cursor-orb-dot {
     width: 34px;
     height: 34px;
   }

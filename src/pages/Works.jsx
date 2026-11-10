@@ -148,6 +148,7 @@ export default function Works() {
                 to={`/works/${work.id}`}
                 className="work-slide"
                 data-index={i}
+                data-cursor="보기"
                 ref={el => (slides.current[i] = el)}
               >
                 <figure style={{ margin: 0 }}>
@@ -156,7 +157,7 @@ export default function Works() {
                     <span>
                       {pad(work.number)}. {work.title}
                     </span>
-                    <span>{work.categoryLabel}</span>
+                    <span className="work-slide-more">자세히 보기</span>
                   </figcaption>
                 </figure>
               </Link>

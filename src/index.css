@@ -589,6 +589,22 @@ img {
   color: var(--fg);
 }
 
+/* 사진 아래 오른쪽 '자세히 보기': 눌러서 들어갈 수 있다는 안내 */
+.work-slide-more {
+  flex: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.work-slide:hover .work-slide-more,
+.work-slide:focus-visible .work-slide-more {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
 /* ---------- Work detail ---------- */
 
 .facts {
