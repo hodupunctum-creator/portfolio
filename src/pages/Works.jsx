@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+import ArrowIcon from '../components/ArrowIcon';
 import { categories, groups, orderedWorks } from '../data/works';
 
 export const pad = n => String(n).padStart(2, '0');
@@ -149,14 +150,16 @@ export default function Works() {
                 to={`/works/${work.id}`}
                 className={`work-slide${i === active ? ' is-current' : ''}`}
                 data-index={i}
-                data-cursor="보기"
+                data-cursor="open"
                 ref={el => (slides.current[i] = el)}
               >
                 <figure style={{ margin: 0 }}>
                   <div className="work-cover-wrap">
                     <WorkCover work={work} inList />
-                    {/* 휴대폰: 화면 가운데 온 작품 사진 모서리에 뜨는 '보기' 원 */}
-                    <span className="work-slide-badge" aria-hidden="true">보기</span>
+                    {/* 휴대폰: 화면 가운데 온 작품 사진 모서리에 뜨는 ↗ 원 */}
+                    <span className="work-slide-badge" aria-hidden="true">
+                      <ArrowIcon />
+                    </span>
                   </div>
                   <figcaption>
                     <span className="work-slide-title">

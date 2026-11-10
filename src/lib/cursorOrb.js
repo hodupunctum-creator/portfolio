@@ -1,5 +1,5 @@
 // 작은 그라데이션 원이 커서를 살짝 늦게 따라옵니다. 링크·버튼 위에서는 조금 커지며 파랑으로 바뀝니다.
-// data-cursor="보기"처럼 적힌 요소 위에서는 원이 크게 부풀고 그 글자가 원 안에 나타납니다.
+// data-cursor가 붙은 요소(작업 사진) 위에서는 원이 크게 부풀고 원 안에 ↗ 화살표가 나타납니다.
 // 휴대폰에서는 손가락으로 화면을 쓸어 스크롤하는 동안 손가락을 따라오고, 손을 떼면 사라집니다.
 
 export function startCursorOrb(el, { ease = 0.16 } = {}) {
@@ -43,7 +43,6 @@ export function startCursorOrb(el, { ease = 0.16 } = {}) {
     if (next !== mode) {
       mode = next;
       el.classList.toggle('is-view', Boolean(mode));
-      if (label && mode) label.textContent = mode;
     }
     const onLink = !mode && Boolean(e.target.closest && e.target.closest('a, button'));
     el.classList.toggle('is-link', onLink);

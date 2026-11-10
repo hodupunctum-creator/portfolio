@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import { startCursorOrb } from '../lib/cursorOrb';
+import ArrowIcon from './ArrowIcon';
 
 // 컴퓨터에서는 커서를, 휴대폰에서는 화면을 쓸어 넘기는 손가락을 따라옵니다.
 // 움직임 줄이기 설정이 켜져 있으면 나오지 않습니다.
@@ -16,7 +17,9 @@ export default function CursorOrb() {
   return (
     <div ref={ref} className="cursor-orb" aria-hidden="true">
       <span className="cursor-orb-dot" />
-      <span className="cursor-orb-label" />
+      <span className="cursor-orb-label">
+        <ArrowIcon />
+      </span>
     </div>
   );
 }

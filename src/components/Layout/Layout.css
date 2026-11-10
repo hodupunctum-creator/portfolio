@@ -124,7 +124,7 @@
   opacity: 1;
 }
 
-/* 작업 사진 위: 원이 크게 부풀고 '보기' 글자가 나타납니다 */
+/* 작업 사진 위: 원이 크게 부풀고 ↗ 화살표가 나타납니다 */
 .cursor-orb-label {
   position: absolute;
   top: 0;

@@ -619,7 +619,7 @@ img {
   position: relative;
 }
 
-/* 휴대폰 전용 '보기' 원: 컴퓨터는 커서 원이 같은 역할을 하므로 숨김 */
+/* 휴대폰 전용 ↗ 원: 컴퓨터는 커서 원이 같은 역할을 하므로 숨김 */
 .work-slide-badge {
   display: none;
 }
@@ -674,6 +674,18 @@ img {
   .work-slide .work-cover-wrap {
     transition: none;
   }
+}
+
+/* ↗ 화살표 크기: 컴퓨터 커서 원 / 휴대폰 원 */
+.arrow-icon {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.work-slide-badge .arrow-icon {
+  width: 22px;
+  height: 22px;
 }
 
 /* ---------- Work detail ---------- */
