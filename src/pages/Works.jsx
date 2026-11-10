@@ -107,7 +107,8 @@ export default function Works() {
                           work.category === category.id ? (
                             <li key={work.id}>
                               <button className={i === active ? 'is-active' : ''} onClick={() => jumpTo(i)}>
-                                {pad(work.number)}. {work.title}
+                                <span className="num">{pad(work.number)}.</span>
+                                <span>{work.title}</span>
                               </button>
                             </li>
                           ) : null
@@ -146,16 +147,21 @@ export default function Works() {
               )}
               <Link
                 to={`/works/${work.id}`}
-                className="work-slide"
+                className={`work-slide${i === active ? ' is-current' : ''}`}
                 data-index={i}
                 data-cursor="보기"
                 ref={el => (slides.current[i] = el)}
               >
                 <figure style={{ margin: 0 }}>
-                  <WorkCover work={work} inList />
+                  <div className="work-cover-wrap">
+                    <WorkCover work={work} inList />
+                    {/* 휴대폰: 화면 가운데 온 작품 사진 모서리에 뜨는 '보기' 원 */}
+                    <span className="work-slide-badge" aria-hidden="true">보기</span>
+                  </div>
                   <figcaption>
-                    <span>
-                      {pad(work.number)}. {work.title}
+                    <span className="work-slide-title">
+                      <span className="num">{pad(work.number)}.</span>
+                      <span>{work.title}</span>
                     </span>
                     <span className="work-slide-more">자세히 보기</span>
                   </figcaption>

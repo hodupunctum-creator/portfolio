@@ -484,6 +484,9 @@ img {
 }
 
 .work-index button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.3em;
   text-align: left;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
@@ -603,6 +606,74 @@ img {
 .work-slide:focus-visible .work-slide-more {
   color: var(--accent);
   text-decoration-color: currentColor;
+}
+
+/* 번호 뒤 제목이 줄바꿈되면 번호 아래가 아니라 제목 첫 글자 아래에서 이어지게 */
+.work-slide-title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.3em;
+}
+
+.work-cover-wrap {
+  position: relative;
+}
+
+/* 휴대폰 전용 '보기' 원: 컴퓨터는 커서 원이 같은 역할을 하므로 숨김 */
+.work-slide-badge {
+  display: none;
+}
+
+@media (hover: none) {
+  .work-slide-badge {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: var(--text-s);
+    font-weight: 600;
+    background: radial-gradient(circle at 35% 35%, #f0566a 0%, var(--accent) 55%, #b5162d 100%);
+    box-shadow: 0 6px 18px rgba(212, 32, 57, 0.28);
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    pointer-events: none;
+  }
+
+  .work-slide.is-current .work-slide-badge {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* 누르는 순간 사진이 살짝 작아지고 어두워지며 눌렸다는 느낌을 줍니다 */
+  .work-slide {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .work-slide .work-cover-wrap {
+    transition: transform 0.18s ease, filter 0.18s ease;
+  }
+
+  .work-slide:active .work-cover-wrap {
+    transform: scale(0.97);
+    filter: brightness(0.85);
+  }
+
+  .work-slide:active .work-slide-more {
+    color: var(--accent);
+  }
+}
+
+@media (hover: none) and (prefers-reduced-motion: reduce) {
+  .work-slide-badge,
+  .work-slide .work-cover-wrap {
+    transition: none;
+  }
 }
 
 /* ---------- Work detail ---------- */
