@@ -40,9 +40,12 @@ export default function Home() {
         ))}
       </div>
 
-      <h1 className="intro-title" aria-label="Dahye's Portfolio">
-        <span>Dahye's</span>
-        <span>Portfolio</span>
+      {/* 첫 화면 큰 제목. 누르면 About으로 넘어갑니다. */}
+      <h1 className="intro-title">
+        <Link to="/about" className="intro-title-link" aria-label="Not good enough, but still writing — About">
+          <span>Not good enough,</span>
+          <span>but still writing</span>
+        </Link>
       </h1>
 
       <div className="intro-copy">

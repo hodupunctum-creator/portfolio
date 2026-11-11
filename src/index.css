@@ -235,7 +235,7 @@ img {
   padding: 0 var(--gutter);
   font-family: var(--font-wave);
   font-weight: 800;
-  font-size: clamp(48px, 9.5vw, 170px);
+  font-size: clamp(48px, 9.2vw, 170px);
   line-height: 0.86;
   letter-spacing: -0.045em;
   text-transform: uppercase;
@@ -244,6 +244,17 @@ img {
 
 .intro-title span {
   display: block;
+}
+
+.intro-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.intro-title-link:hover,
+.intro-title-link:focus-visible {
+  color: var(--accent);
 }
 
 .intro-copy {
@@ -844,8 +855,11 @@ img {
     font-size: min(16px, calc((100vw - 2 * var(--gutter)) / 23));
   }
 
+  /* 휴대폰: 긴 제목이 네 줄(NOT GOOD / ENOUGH, / BUT STILL / WRITING)로 나뉘도록 */
   .intro-title {
     margin-top: auto;
+    font-size: clamp(40px, 13vw, 96px);
+    line-height: 0.96;
   }
 
   .work-slide figcaption {
