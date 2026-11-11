@@ -631,8 +631,8 @@ img {
     bottom: 12px;
     display: grid;
     place-items: center;
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     color: #ffffff;
     font-size: var(--text-s);
@@ -679,13 +679,13 @@ img {
 /* ↗ 화살표 크기: 컴퓨터 커서 원 / 휴대폰 원 */
 .arrow-icon {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 17px;
+  height: 17px;
 }
 
 .work-slide-badge .arrow-icon {
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
 }
 
 /* ---------- Work detail ---------- */

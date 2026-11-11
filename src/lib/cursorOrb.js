@@ -46,7 +46,7 @@ export function startCursorOrb(el, { ease = 0.16 } = {}) {
     }
     const onLink = !mode && Boolean(e.target.closest && e.target.closest('a, button'));
     el.classList.toggle('is-link', onLink);
-    targetScale = mode ? 4.4 : onLink ? 1.9 : 1;
+    targetScale = mode ? 3.4 : onLink ? 1.9 : 1;
     wake();
   };
   const onLeave = () => {
