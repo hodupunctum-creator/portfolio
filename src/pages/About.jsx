@@ -12,8 +12,11 @@ export default function About() {
           <span className="label">info</span>
         </aside>
         <div className="split-main">
-          <div className="prose">
-            <p className="indent">{site.bio}</p>
+          <div className="prose about-prose">
+            <h2 className="about-name">{site.aboutName}</h2>
+            {site.about.map(paragraph => (
+              <p key={paragraph.slice(0, 12)}>{paragraph}</p>
+            ))}
           </div>
           <figure className="about-figure">
             <img
