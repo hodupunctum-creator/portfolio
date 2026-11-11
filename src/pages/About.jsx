@@ -17,6 +17,7 @@ export default function About() {
             {site.about.map(paragraph => (
               <p key={paragraph.slice(0, 12)}>{paragraph}</p>
             ))}
+            <p>{site.aboutPhotoNote}</p>
           </div>
           <figure className="about-figure">
             <img
