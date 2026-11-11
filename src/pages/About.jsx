@@ -23,7 +23,7 @@ export default function About() {
       </header>
 
       <div className="split">
-        <aside className="split-aside">
+        <aside className="split-aside about-aside">
           <span className="label">info</span>
           <SignPhoto className="about-figure--aside" />
         </aside>
