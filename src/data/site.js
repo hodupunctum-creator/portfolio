@@ -2,7 +2,7 @@
 export const site = {
   name: 'Dahye',
   role: 'Portfolio archive',
-  bio: '미흡하지만 그럼에도 계속해서 소설을 쓰는 사람',
+  bio: '미흡하지만 그럼에도 계속해서 쓰는 사람',
   // About 페이지 소개글. 문단마다 따옴표 하나씩입니다.
   aboutName: '송다혜/이다유',
   about: [
