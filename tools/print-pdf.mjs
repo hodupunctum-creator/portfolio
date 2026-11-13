@@ -1,5 +1,5 @@
 // 포트폴리오 인쇄용 PDF (A4 가로) 생성기
-// 사용법: NODE_PATH=$(npm root -g) node tools/print-pdf.mjs <저장소 경로> <출력 폴더>  (Playwright 필요)
+// 사용법: NODE_PATH=$(npm root -g) node tools/print-pdf.mjs <저장소 경로> <출력 폴더>  (Playwright 필요, 같은 폴더에 qr.svg)
 // 사이트 저장소의 데이터·글꼴·사진을 그대로 써서 한 장 한 장 레이아웃을 짠 뒤 Playwright로 PDF를 뽑습니다.
 import { writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -12,6 +12,13 @@ const { orderedWorks, categories, groups } = await import(path.join(REPO, 'src/d
 const { site } = await import(path.join(REPO, 'src/data/site.js'));
 
 const PUB = path.join(REPO, 'public');
+const SITE_URL = 'https://portfolio-blush-beta-xfi288olfi.vercel.app/';
+// 사이트로 연결되는 QR (tools/qr.svg, reportlab로 생성)
+import { readFileSync } from 'node:fs';
+const QR_SVG = readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'qr.svg'), 'utf8')
+  .replace(/^[\s\S]*?<svg/, '<svg')
+  .replace(/width="[^"]*" height="[^"]*"/, 'width="100%" height="100%"')
+  .replace(/<title>[\s\S]*?<\/title>/, '');
 const fileUrl = p => 'file://' + path.join(PUB, p);
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const pad = n => String(n).padStart(2, '0');
@@ -32,12 +39,13 @@ const cover = `
   <div class="orb" style="--x:66%;--y:40%;--w:118mm;background:radial-gradient(circle at 36% 64%, #e5283f 0%, #ec4a5c 36%, rgba(240,112,128,.72) 54%, rgba(246,168,178,.3) 62%, rgba(248,190,198,0) 71%)"></div>
   <div class="orb" style="--x:24%;--y:26%;--w:68mm;background:radial-gradient(circle at 36% 64%, #6d9fe6 0%, #88b2ec 36%, rgba(160,196,242,.55) 54%, rgba(175,205,244,.25) 62%, rgba(190,214,246,0) 71%)"></div>
   <div class="orb" style="--x:89%;--y:16%;--w:50mm;background:radial-gradient(circle at 36% 64%, #f2bd1d 0%, #f6cc45 36%, rgba(249,220,118,.6) 54%, rgba(250,226,140,.25) 62%, rgba(251,232,166,0) 71%)"></div>
-  <div class="orb" style="--x:88%;--y:78%;--w:34mm;background:radial-gradient(circle at 36% 64%, #6fbf8c 0%, #8ccda3 36%, rgba(170,220,186,.55) 54%, rgba(184,226,196,.25) 62%, rgba(196,230,206,0) 71%)"></div>
+  <div class="orb" style="--x:93%;--y:52%;--w:30mm;background:radial-gradient(circle at 36% 64%, #6fbf8c 0%, #8ccda3 36%, rgba(170,220,186,.55) 54%, rgba(184,226,196,.25) 62%, rgba(196,230,206,0) 71%)"></div>
   <div class="orb" style="--x:45%;--y:11%;--w:24mm;background:radial-gradient(circle at 36% 64%, #8c84dc 0%, #a59de6 36%, rgba(188,182,240,.5) 54%, rgba(200,194,243,.2) 62%, rgba(210,206,246,0) 71%)"></div>
   <div class="orb" style="--x:10%;--y:60%;--w:13mm;background:radial-gradient(circle at 36% 64%, #e5283f 0%, #ec4a5c 36%, rgba(240,112,128,.5) 54%, rgba(244,140,154,.2) 62%, rgba(246,168,178,0) 71%)"></div>
   <div class="cover-intro"><span class="label">intro</span><p>${esc(site.bio)}</p></div>
   <h1 class="cover-title"><span>Not good enough,</span><span>but still writing</span></h1>
-  <div class="cover-foot"><span>송다혜 · 이다유 포트폴리오</span><span>${esc(site.email)}</span></div>
+  <div class="cover-foot"><span>송다혜 · 이다유 포트폴리오</span></div>
+  <div class="cover-qr"><div class="qr-text"><span class="label">site</span><p>QR을 찍으면<br>포트폴리오 사이트로 이동합니다</p><p class="url">${esc(SITE_URL.replace(/^https:\/\//, '').replace(/\/$/, ''))}</p><p class="url">${esc(site.email)}</p></div><div class="qr">${QR_SVG}</div></div>
 </section>`;
 
 // ---------- About ----------
@@ -70,15 +78,15 @@ const indexCols = groups
               `<li><span class="n">${pad(w.number)}.</span><span class="t">${text(w.title)}</span><span class="dots"></span><span class="pg">${pageOf(i)}</span></li>`
           )
           .join('');
-        return `<section class="idx-cat"><h3><span>${esc(cat.label)}</span><span class="en">${esc(cat.labelEn)}</span></h3><ol>${items}</ol></section>`;
+        return `<section class="idx-cat"><h3><span>${esc(cat.label)}</span></h3><ol>${items}</ol></section>`;
       })
       .join('');
-    return `<div class="idx-col"><h2 class="idx-group">${esc(group.label)} <span class="en">${esc(group.labelEn)}</span></h2>${body}</div>`;
+    return `<div class="idx-col"><h2 class="idx-group">${esc(group.label)}</h2>${body}</div>`;
   })
   .join('');
 const index = `
 <section class="page index">
-  <header class="phead"><span class="kicker">Works</span></header>
+  <header class="phead"><span class="kicker">목차</span></header>
   <div class="idx">${indexCols}</div>
   ${footer(3)}
 </section>`;
@@ -182,6 +190,12 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 .cover-title{position:absolute;left:14mm;bottom:30mm;margin:0;z-index:2;font-family:'Inter Tight','Inter',sans-serif;font-weight:800;font-size:23mm;line-height:.88;letter-spacing:-.045em;text-transform:uppercase;color:#33322d}
 .cover-title span{display:block}
 .cover-foot{position:absolute;left:15mm;right:15mm;bottom:10mm;display:flex;justify-content:space-between;font-size:9.5pt;z-index:2}
+.cover-qr{position:absolute;right:15mm;bottom:10mm;z-index:2;display:flex;align-items:flex-end;gap:5mm}
+.qr-text{text-align:right;font-size:8.5pt;line-height:1.5}
+.qr-text .label::before{margin-left:auto}
+.qr-text p{margin:0 0 1.2mm}
+.qr-text .url{color:#6d6b66;font-size:7.5pt;margin:0}
+.qr{width:27mm;height:27mm;padding:2.2mm;background:#fbf8f1;border-radius:1.5mm}
 
 /* About */
 .about-grid{display:grid;grid-template-columns:78mm 1fr;gap:14mm;margin-top:9mm;height:160mm}
