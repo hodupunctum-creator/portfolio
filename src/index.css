@@ -235,7 +235,7 @@ img {
   padding: 0 var(--gutter);
   font-family: var(--font-wave);
   font-weight: 800;
-  font-size: clamp(48px, 9.2vw, 170px);
+  font-size: clamp(40px, 7vw, 128px);
   line-height: 0.86;
   letter-spacing: -0.045em;
   text-transform: uppercase;
