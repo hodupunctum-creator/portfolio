@@ -33,12 +33,7 @@ export default function About() {
             {site.about.map(paragraph => (
               <p key={paragraph.slice(0, 12)}>{paragraph}</p>
             ))}
-            {/* 휴대폰에서는 사진이 글 아래에 오므로 '옆의'를 '아래의'로 바꿔 보여 줍니다 */}
-            <p>
-              <span className="about-wide">옆의</span>
-              <span className="about-narrow">아래의</span>
-              {site.aboutPhotoNote.replace(/^옆의/, '')}
-            </p>
+            <p>{site.aboutPhotoNote}</p>
           </div>
           <SignPhoto className="about-figure--inline" />
           <dl className="facts">

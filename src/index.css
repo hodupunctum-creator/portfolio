@@ -995,23 +995,17 @@ img {
   max-width: min(360px, 100%);
 }
 
-.about-figure--inline,
-.about-narrow {
+.about-figure--inline {
   display: none;
 }
 
 @media (max-width: 760px) {
-  .about-figure--aside,
-  .about-wide {
+  .about-figure--aside {
     display: none;
   }
 
   .about-figure--inline {
     display: block;
-  }
-
-  .about-narrow {
-    display: inline;
   }
 }
 
