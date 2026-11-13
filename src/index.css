@@ -699,6 +699,11 @@ img {
   height: 15px;
 }
 
+/* 휴대폰 전용 분류 줄: 컴퓨터에서는 숨김 */
+.work-cats {
+  display: none;
+}
+
 /* ---------- Work detail ---------- */
 
 .facts {
@@ -877,13 +882,52 @@ img {
     justify-content: flex-start;
     gap: 12px;
     font-size: var(--text-m);
-    transition: opacity 0.25s ease;
   }
 
-  /* 목록을 보는 동안은 '소설 01/05' 표시를 숨깁니다(자리는 유지해서 화면이 덜컹거리지 않게) */
-  .page-count.is-list {
-    visibility: hidden;
-    opacity: 0;
+  /* 휴대폰: 긴 목록과 '소설 01/05' 표시 대신 위쪽 분류 줄을 씁니다 */
+  .page-count,
+  .work-index-page .split-aside {
+    display: none;
+  }
+
+  .work-cats {
+    display: flex;
+    gap: 14px;
+    margin: 4px calc(var(--gutter) * -1) -16px;
+    padding: 10px var(--gutter) 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    font-size: var(--text-s);
+    white-space: nowrap;
+  }
+
+  .work-cats::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-cats-group {
+    display: flex;
+    gap: 14px;
+  }
+
+  /* 창작 / 업무 사이 옅은 구분선 */
+  .work-cats-group + .work-cats-group {
+    padding-left: 14px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .work-cats button {
+    padding: 2px 0;
+    color: var(--muted);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 5px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .work-cats button.is-active {
+    color: var(--fg);
+    text-decoration-color: currentColor;
   }
 
   .split {

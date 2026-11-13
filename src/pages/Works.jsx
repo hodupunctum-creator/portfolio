@@ -56,18 +56,6 @@ export default function Works() {
   // 목록이 길어 스크롤되는 경우, 지금 보고 있는 작품 제목이 목록 화면 안에 보이도록 맞춥니다.
   const asideRef = useRef(null);
 
-  // 휴대폰에서는 목록이 사진들 위에 따로 있어서, 목록을 보는 동안에는 '소설 01/05' 같은 표시가 맞지 않습니다.
-  // 목록이 화면 가운데에 있는 동안은 표시를 숨기고, 사진들로 내려오면 다시 보여 줍니다(숨김은 CSS에서 휴대폰에만).
-  const [inList, setInList] = useState(true);
-  useEffect(() => {
-    const aside = asideRef.current;
-    if (!aside) return undefined;
-    const observer = new IntersectionObserver(([entry]) => setInList(entry.isIntersecting), {
-      rootMargin: '-45% 0px -45% 0px'
-    });
-    observer.observe(aside);
-    return () => observer.disconnect();
-  }, []);
   useEffect(() => {
     const aside = asideRef.current;
     const button = aside?.querySelector('button.is-active');
@@ -92,15 +80,51 @@ export default function Works() {
   }, [location.key]); // eslint-disable-line react-hooks/exhaustive-deps
   const current = orderedWorks[active];
 
+  // 휴대폰 전용 분류 줄: 누르면 그 분류의 첫 작업으로 내려가고, 지금 보는 분류가 줄 안에서 보이도록 옆으로 밀어 줍니다.
+  const catBarRef = useRef(null);
+  const jumpToCategory = id => {
+    const i = orderedWorks.findIndex(work => work.category === id);
+    const el = slides.current[i];
+    if (!el) return;
+    const head = document.querySelector('.page-head');
+    const top = el.getBoundingClientRect().top + window.scrollY - (head ? head.offsetHeight : 0) - 16;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+  useEffect(() => {
+    const bar = catBarRef.current;
+    const chip = bar?.querySelector('.is-active');
+    if (!bar || !chip || bar.scrollWidth <= bar.clientWidth) return;
+    bar.scrollTo({ left: chip.offsetLeft - (bar.clientWidth - chip.offsetWidth) / 2, behavior: 'smooth' });
+  }, [current.category]);
+
   return (
-    <main>
+    <main className="work-index-page">
       <header className="page-head">
         <h1 className="display">Works</h1>
-        <div className={`page-count display${inList ? ' is-list' : ''}`} aria-live="polite">
+        <div className="page-count display" aria-live="polite">
           <span className="page-count-label">{current.categoryLabel}</span>
           <span>{pad(current.number)}</span>
           <span>/{pad(current.categoryTotal)}</span>
         </div>
+        <nav className="work-cats" ref={catBarRef} aria-label="Works 분류">
+          {groups.map(group => (
+            <div className="work-cats-group" key={group.id}>
+              {categories
+                .filter(category => category.group === group.id)
+                .map(category => (
+                  <button
+                    type="button"
+                    key={category.id}
+                    className={current.category === category.id ? 'is-active' : undefined}
+                    aria-current={current.category === category.id ? 'true' : undefined}
+                    onClick={() => jumpToCategory(category.id)}
+                  >
+                    {category.label}
+                  </button>
+                ))}
+            </div>
+          ))}
+        </nav>
       </header>
 
       <div className="split">
