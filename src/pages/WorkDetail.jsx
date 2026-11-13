@@ -5,6 +5,7 @@ import { orderedWorks as works } from '../data/works';
 import { WorkCover, pad } from './Works';
 import NotFound from './NotFound';
 import OverscrollBack from '../components/OverscrollBack';
+import FitTitle from '../components/FitTitle';
 
 // <작품명> 같은 꺾쇠 제목이 줄 끝에서 '<'와 제목으로 갈라지지 않게 묶습니다.
 const keepTitlesTogether = text =>
@@ -55,7 +56,7 @@ export default function WorkDetail() {
     <main>
       <OverscrollBack fromId={work.id} />
       <header className="page-head">
-        <h1 className="display display--title">{work.title}</h1>
+        <FitTitle className="display display--title work-detail-title">{work.title}</FitTitle>
         <div className="page-count display display--title">
           <span className="page-count-label">{work.categoryLabel}</span>
           <span>{pad(work.number)}</span>
