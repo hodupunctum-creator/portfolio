@@ -3,7 +3,7 @@
 // - id: 주소에 쓰이는 고유값 (/works/:id)
 // - tag: 노션 제목 앞의 [ ] 분류
 // - category: 파일 맨 아래 categories의 id (fiction, prose, photo, project, editing, content, field). 번호는 카테고리마다 01부터 매겨집니다.
-// - org: 소속 / period: 진행 기간 (노션에 적힌 경우만)
+// - org: 소속 / period: 진행 기간 (기록용. 사이트에는 표시하지 않습니다)
 // - description: 상세 페이지 본문. 문단 사이는 \n\n(빈 줄), 문단 안에서 줄만 바꿀 때는 \n.
 //          구분선을 넣으려면 빈 줄 사이에 --- 만 적습니다 (예: '첫 문단\n\n---\n\n다음 문단').
 //          excerpt(글 전문)를 본문 중간에 넣으려면 그 자리에 [[excerpt]] 를 적습니다. 없으면 본문 맨 아래에 붙습니다.
