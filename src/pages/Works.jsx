@@ -55,6 +55,19 @@ export default function Works() {
 
   // 목록이 길어 스크롤되는 경우, 지금 보고 있는 작품 제목이 목록 화면 안에 보이도록 맞춥니다.
   const asideRef = useRef(null);
+
+  // 휴대폰에서는 목록이 사진들 위에 따로 있어서, 목록을 보는 동안에는 '소설 01/05' 같은 표시가 맞지 않습니다.
+  // 목록이 화면 가운데에 있는 동안은 표시를 숨기고, 사진들로 내려오면 다시 보여 줍니다(숨김은 CSS에서 휴대폰에만).
+  const [inList, setInList] = useState(true);
+  useEffect(() => {
+    const aside = asideRef.current;
+    if (!aside) return undefined;
+    const observer = new IntersectionObserver(([entry]) => setInList(entry.isIntersecting), {
+      rootMargin: '-45% 0px -45% 0px'
+    });
+    observer.observe(aside);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     const aside = asideRef.current;
     const button = aside?.querySelector('button.is-active');
@@ -83,7 +96,7 @@ export default function Works() {
     <main>
       <header className="page-head">
         <h1 className="display">Works</h1>
-        <div className="page-count display" aria-live="polite">
+        <div className={`page-count display${inList ? ' is-list' : ''}`} aria-live="polite">
           <span className="page-count-label">{current.categoryLabel}</span>
           <span>{pad(current.number)}</span>
           <span>/{pad(current.categoryTotal)}</span>

@@ -877,6 +877,13 @@ img {
     justify-content: flex-start;
     gap: 12px;
     font-size: var(--text-m);
+    transition: opacity 0.25s ease;
+  }
+
+  /* 목록을 보는 동안은 '소설 01/05' 표시를 숨깁니다(자리는 유지해서 화면이 덜컹거리지 않게) */
+  .page-count.is-list {
+    visibility: hidden;
+    opacity: 0;
   }
 
   .split {
