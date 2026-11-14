@@ -138,7 +138,6 @@ export default function Works() {
                     <section key={category.id} className="work-index-group">
                       <h2 className={`work-index-title${current.category === category.id ? ' is-active' : ''}`}>
                         {category.label}
-                        <span className="work-index-title-en">{category.labelEn}</span>
                       </h2>
                       <ol>
                         {orderedWorks.map((work, i) =>
@@ -180,7 +179,6 @@ export default function Works() {
               {work.number === 1 && (
                 <h2 className="work-group-title label">
                   {work.categoryLabel}
-                  <span className="work-index-title-en">{work.categoryLabelEn}</span>
                 </h2>
               )}
               <Link

@@ -150,7 +150,7 @@ const workPage = (w, i) => {
     .join('');
   return `
 <section class="page work">
-  <header class="phead"><span class="kicker">Works · ${esc(cat.label)} <span class="en">${esc(cat.labelEn)}</span></span><span class="count">${pad(w.number)} / ${pad(w.categoryTotal)}</span></header>
+  <header class="phead"><span class="kicker">Works · ${esc(cat.label)}</span><span class="count">${pad(w.number)} / ${pad(w.categoryTotal)}</span></header>
   <div class="work-body">
     <div class="wtext">
       <h2 class="wtitle">${text(w.title)}</h2>
