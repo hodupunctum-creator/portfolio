@@ -44,7 +44,6 @@ const cover = `
   <div class="orb" style="--x:10%;--y:60%;--w:13mm;background:radial-gradient(circle at 36% 64%, #e5283f 0%, #ec4a5c 36%, rgba(240,112,128,.5) 54%, rgba(244,140,154,.2) 62%, rgba(246,168,178,0) 71%)"></div>
   <div class="cover-intro"><span class="label">intro</span><p>${esc(site.bio)}</p></div>
   <h1 class="cover-title"><span>Not good enough,</span><span>but still writing</span></h1>
-  <div class="cover-foot"><span>송다혜 · 이다유 포트폴리오</span></div>
   <div class="cover-qr"><div class="qr-text"><p>사이트에서 보기</p><p class="url">${esc(SITE_URL.replace(/^https:\/\//, '').replace(/\/$/, ''))}</p></div><div class="qr">${QR_SVG}</div></div>
 </section>`;
 
