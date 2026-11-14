@@ -45,7 +45,7 @@ const cover = `
   <div class="cover-intro"><span class="label">intro</span><p>${esc(site.bio)}</p></div>
   <h1 class="cover-title"><span>Not good enough,</span><span>but still writing</span></h1>
   <div class="cover-foot"><span>송다혜 · 이다유 포트폴리오</span></div>
-  <div class="cover-qr"><div class="qr-text"><p>사이트에서 보기</p><p class="url">${esc(site.email)}</p></div><div class="qr">${QR_SVG}</div></div>
+  <div class="cover-qr"><div class="qr-text"><p>사이트에서 보기</p><p class="url">${esc(SITE_URL.replace(/^https:\/\//, '').replace(/\/$/, ''))}</p></div><div class="qr">${QR_SVG}</div></div>
 </section>`;
 
 // ---------- About ----------
@@ -193,7 +193,7 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 .qr-text .label::before{margin-left:auto}
 .qr-text p{margin:0 0 1.2mm}
 .qr-text .url{color:#6d6b66;font-size:7.5pt;margin:0}
-.qr{width:18mm;height:18mm;padding:1.6mm;background:#fbf8f1;border-radius:1mm;box-shadow:0 0 0 .25mm rgba(31,31,31,.12)}
+.qr{width:21mm;height:21mm;padding:1.8mm;background:#fbf8f1;border-radius:1mm;box-shadow:0 0 0 .25mm rgba(31,31,31,.12)}
 
 /* About */
 .about-grid{display:grid;grid-template-columns:78mm 1fr;gap:14mm;margin-top:9mm;height:160mm}
