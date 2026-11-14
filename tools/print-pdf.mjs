@@ -251,7 +251,8 @@ const fitScript = `
     // 글 칸: 사진 수가 적으면 넓게 써도 됨. 글자 10pt에서 시작해 넘치면 칸을 넓히고, 그래도 넘치면 글자를 줄임
     let chosen = null;
     const nImgs = ph.querySelectorAll('img').length;
-    const widths = nImgs <= 1 ? [44, 50] : [36, 40, 44, 48, 52];
+    // 모든 장에서 글 칸 너비를 같게(36%) 맞춥니다. 넘칠 때만 넓힙니다.
+    const widths = [36, 40, 44, 48, 52];
     outer: for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8, 7.6, 7.2]) {
       for (const tw of widths) {
         wt.style.setProperty('--tw', tw + '%');
@@ -265,8 +266,8 @@ const fitScript = `
       ph.appendChild(ex);
       ex.classList.add('excerpt--side');
       chosen = null;
-      outer2: for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8]) {
-        for (const tw of [40, 44, 48, 52]) {
+      outer2: for (const tw of [36, 40, 44, 48, 52]) {
+        for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8]) {
           wt.style.setProperty('--tw', tw + '%');
           wt.style.setProperty('--fs', fs + 'pt');
           if (fits()) { chosen = { tw, fs }; break outer2; }
