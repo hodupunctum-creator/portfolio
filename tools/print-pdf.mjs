@@ -156,7 +156,7 @@ const workPage = (w, i) => {
       <dl class="facts">${factsHtml}</dl>
       <div class="desc">${renderDesc(w)}</div>
     </div>
-    <div class="wphotos">${photos}</div>
+    <div class="wphotos"><div class="pblock">${photos}</div></div>
   </div>
   ${footer(pageOf(i))}
 </section>`;
@@ -215,20 +215,23 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 .idx-cat .pg{font-variant-numeric:tabular-nums;color:#6d6b66}
 
 /* 작업 */
-.work-body{position:absolute;left:15mm;right:15mm;top:26mm;bottom:15mm;display:flex;gap:9mm}
+.work-body{position:absolute;left:15mm;right:15mm;top:26mm;bottom:15mm;display:flex;gap:8mm}
 .wtext{flex:0 0 var(--tw,38%);display:flex;flex-direction:column;min-width:0;overflow:hidden;font-size:var(--fs,10pt)}
 .wtitle{margin:0 0 3.5mm;font-size:1.75em;font-weight:600;line-height:1.2;letter-spacing:-.02em}
 .facts{display:grid;grid-template-columns:4.2em 1fr;gap:.9mm 3mm;margin:0 0 4mm;padding-bottom:3.5mm;border-bottom:.25mm solid rgba(31,31,31,.2);font-size:.86em;line-height:1.5}
 .facts dt{color:#6d6b66}.facts dd{margin:0;display:flex;flex-direction:column;overflow-wrap:anywhere}
-.desc p{margin:0 0 .75em;line-height:1.72}
+.desc p{margin:0 0 var(--pm,.75em);line-height:var(--lh,1.72)}
 .desc .rule{border:0;border-top:.25mm solid rgba(31,31,31,.3);margin:.9em 0}
 .excerpt{margin:.4em 0 .9em;padding-top:.7em;border-top:.25mm dashed rgba(31,31,31,.45);font-size:.88em}
 .excerpt h4{margin:0 0 .5em;font-weight:600;font-size:1em}
 .excerpt p{margin:0;line-height:1.62}
-.wphotos{flex:1 1 auto;min-width:0;position:relative}
+/* 사진 묶음은 남는 칸의 가운데에 두고, 묶음 제목은 사진 왼쪽 끝에 맞춤 */
+.wphotos{flex:1 1 auto;min-width:0;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.pblock{max-width:100%}
 .pgroup h5{margin:0 0 1.4mm;font-size:8pt;font-weight:400;color:#6d6b66}
 .prow-src{display:none}
-.prow{display:flex;gap:2.2mm;margin-bottom:2.2mm;justify-content:center}
+.prow{display:flex;gap:2.2mm;margin-bottom:2.2mm;justify-content:flex-start}
+.pgroup:last-child .prow:last-child{margin-bottom:0}
 .prow img{display:block;height:100%;width:auto}
 .excerpt--side{position:absolute;left:0;right:0;bottom:0;margin:0;font-size:8.6pt;columns:2;column-gap:6mm}
 .excerpt--side h4{column-span:all}
@@ -251,8 +254,8 @@ const fitScript = `
     // 글 칸: 사진 수가 적으면 넓게 써도 됨. 글자 10pt에서 시작해 넘치면 칸을 넓히고, 그래도 넘치면 글자를 줄임
     let chosen = null;
     const nImgs = ph.querySelectorAll('img').length;
-    // 모든 장에서 글 칸 너비를 같게(36%) 맞춥니다. 넘칠 때만 넓힙니다.
-    const widths = [36, 40, 44, 48, 52];
+    // 모든 장에서 글 칸 너비를 같게(33%) 맞춥니다. 넘칠 때만 넓힙니다.
+    const widths = [33, 36, 40, 44, 48, 52];
     outer: for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8, 7.6, 7.2]) {
       for (const tw of widths) {
         wt.style.setProperty('--tw', tw + '%');
@@ -266,11 +269,14 @@ const fitScript = `
       ph.appendChild(ex);
       ex.classList.add('excerpt--side');
       chosen = null;
-      outer2: for (const tw of [36, 40, 44, 48, 52]) {
-        for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8]) {
-          wt.style.setProperty('--tw', tw + '%');
+      // 글 칸 너비는 다른 장과 같게 두고, 줄 간격·문단 간격을 먼저 조금 좁힌 뒤 글자 크기를 줄임
+      outer2: for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8]) {
+        for (const [lh, pm] of [[1.72, .75], [1.62, .6], [1.55, .5]]) {
+          wt.style.setProperty('--tw', '33%');
           wt.style.setProperty('--fs', fs + 'pt');
-          if (fits()) { chosen = { tw, fs }; break outer2; }
+          wt.style.setProperty('--lh', lh);
+          wt.style.setProperty('--pm', pm + 'em');
+          if (fits()) { chosen = { tw: 33, fs, lh }; break outer2; }
         }
       }
     }
@@ -279,6 +285,7 @@ const fitScript = `
     // 사진: 묶음별로 정당화 줄 배치. 줄 높이 t를 이분 탐색해 전체 높이가 칸에 들어가는 가장 큰 값을 찾음
     const side = ph.querySelector('.excerpt--side');
     const W = ph.clientWidth, H = ph.clientHeight - (side ? side.getBoundingClientRect().height + 4 * MM : 0);
+    if (side) ph.style.paddingBottom = (side.getBoundingClientRect().height + 4 * MM) + 'px';
     const groups = [...ph.querySelectorAll('.pgroup')].map(g => ({
       el: g, head: g.querySelector('h5'),
       imgs: [...g.querySelectorAll('img')].map(im => ({ im, ar: im.naturalWidth / im.naturalHeight }))
@@ -286,7 +293,7 @@ const fitScript = `
     const headH = g => g.head ? g.head.getBoundingClientRect().height + 1.4 * MM : 0;
     // 묶음마다 사진을 순서대로 여러 줄로 나누는 모든 방법을 따져 봄(각 줄은 칸 너비에 꽉 맞춤).
     // 전체를 같은 비율로 줄여 칸 높이에 맞췄을 때 사진 면적이 가장 큰 조합을 고름.
-    const CAP = H * 0.62; // 한 줄이 너무 높아지지 않게(세로 사진 한 장만 있는 줄 등)
+    const CAP = H * (ph.querySelectorAll('img').length >= 6 ? 0.42 : 0.62); // 한 줄이 너무 높아지지 않게(세로 사진 한 장만 있는 줄 등)
     const options = groups.map(g => {
       const ars = g.imgs.map(x => x.ar), n = ars.length, out = [];
       for (let mask = 0; mask < (1 << (n - 1)); mask++) {
