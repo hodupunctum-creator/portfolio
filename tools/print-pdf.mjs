@@ -202,7 +202,7 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 .about-photo{margin:0;height:100%;display:flex;align-items:flex-start;justify-content:center}
 .about-photo img{max-width:100%;max-height:100%;display:block}
 .about-name{margin:0 0 5mm;font-size:13pt;font-weight:600}
-.about-text p{margin:0 0 3.6mm;font-size:10.2pt;line-height:1.75}
+.about-text p{margin:0 0 3.6mm;font-size:10.8pt;line-height:1.75}
 .contact{margin:6mm 0 0;display:grid;grid-template-columns:22mm auto;font-size:9.5pt}
 .contact dt{color:#6d6b66}.contact dd{margin:0}
 
@@ -220,7 +220,7 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 /* 작업 */
 .work-body{position:absolute;left:15mm;right:15mm;top:26mm;bottom:15mm;display:flex;gap:8mm}
 .wtext{flex:0 0 var(--tw,38%);display:flex;flex-direction:column;min-width:0;overflow:hidden;font-size:var(--fs,10pt)}
-.wtitle{margin:0 0 3.5mm;font-size:1.75em;font-weight:600;line-height:1.2;letter-spacing:-.02em}
+.wtitle{margin:0 0 3.5mm;font-size:17.5pt;font-weight:600;line-height:1.2;letter-spacing:-.02em}
 .facts{display:grid;grid-template-columns:4.2em 1fr;gap:.9mm 3mm;margin:0 0 4mm;padding-bottom:3.5mm;border-bottom:.25mm solid rgba(31,31,31,.2);font-size:.86em;line-height:1.5}
 .facts dt{color:#6d6b66}.facts dd{margin:0;display:flex;flex-direction:column;overflow-wrap:anywhere}
 .desc p{margin:0 0 var(--pm,.75em);line-height:var(--lh,1.72)}
@@ -259,8 +259,10 @@ const fitScript = `
     const nImgs = ph.querySelectorAll('img').length;
     // 모든 장에서 글 칸 너비를 같게(33%) 맞춥니다. 넘칠 때만 넓힙니다.
     const widths = [33, 36, 40, 44, 48, 52];
-    outer: for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8, 7.6, 7.2]) {
-      for (const tw of widths) {
+    // 본문 10.8pt에서 시작. 같은 너비를 지키는 게 먼저라, 너비를 넓히기 전에 글자를 조금(10pt까지) 줄여 봄
+    const sizes = [10.8, 10.4, 10, 9.6, 9.2, 8.8, 8.4, 8, 7.6, 7.2];
+    outer: for (const fs of sizes) {
+      for (const tw of fs >= 10 ? [33] : widths) {
         wt.style.setProperty('--tw', tw + '%');
         wt.style.setProperty('--fs', fs + 'pt');
         if (fits()) { chosen = { tw, fs }; break outer; }
@@ -268,12 +270,12 @@ const fitScript = `
     }
     // 글이 너무 작아질 만큼 길면(인용 전문이 있는 경우) 인용 전문을 사진 칸 아래로 옮기고 다시 맞춤
     const ex = wt.querySelector('.excerpt');
-    if (ex && (!chosen || chosen.fs < 9)) {
+    if (ex && (!chosen || chosen.fs < 10)) {
       ph.appendChild(ex);
       ex.classList.add('excerpt--side');
       chosen = null;
       // 글 칸 너비는 다른 장과 같게 두고, 줄 간격·문단 간격을 먼저 조금 좁힌 뒤 글자 크기를 줄임
-      outer2: for (const fs of [10, 9.6, 9.2, 8.8, 8.4, 8]) {
+      outer2: for (const fs of [10.8, 10.4, 10, 9.6, 9.2, 8.8, 8.4, 8]) {
         for (const [lh, pm] of [[1.72, .75], [1.62, .6], [1.55, .5]]) {
           wt.style.setProperty('--tw', '33%');
           wt.style.setProperty('--fs', fs + 'pt');
