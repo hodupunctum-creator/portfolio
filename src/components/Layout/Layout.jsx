@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
-import { site } from '../../data/site';
 import CursorOrb from '../CursorOrb';
 import './Layout.css';
 
@@ -42,11 +41,6 @@ export default function Layout() {
 
       <Outlet />
 
-      <address className="frame-contact">
-        {site.contactLabel}:
-        <br />
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-      </address>
       <span className="frame-year">{new Date().getFullYear()}.</span>
       <CursorOrb />
     </div>
