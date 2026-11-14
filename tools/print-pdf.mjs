@@ -25,6 +25,8 @@ const pad = n => String(n).padStart(2, '0');
 // <작품명>이 줄 끝에서 갈라지지 않게 묶음 (이스케이프 후 적용)
 const keepTitles = html => html.replace(/(&lt;[^&]{1,40}?&gt;)/g, '<span class="nowrap">$1</span>');
 const text = s => keepTitles(esc(s));
+// 을유1945의 '청'은 오른쪽 여백이 넓어 '청년'이 벌어져 보임 → 제목에서만 살짝 좁힘
+const titleText = s => text(s).replace(/청(?=년)/g, '<span class="tk">청</span>');
 
 // 페이지 번호: 1 표지, 2 About, 3 목차, 4~ 작업
 const FIRST_WORK_PAGE = 4;
@@ -74,7 +76,7 @@ const indexCols = groups
           .filter(({ w }) => w.category === cat.id)
           .map(
             ({ w, i }) =>
-              `<li><span class="n">${pad(w.number)}.</span><span class="t">${text(w.title)}</span><span class="dots"></span><span class="pg">${pageOf(i)}</span></li>`
+              `<li><span class="n">${pad(w.number)}.</span><span class="t">${titleText(w.title)}</span><span class="dots"></span><span class="pg">${pageOf(i)}</span></li>`
           )
           .join('');
         return `<section class="idx-cat"><h3><span>${esc(cat.label)}</span></h3><ol>${items}</ol></section>`;
@@ -124,11 +126,24 @@ const photoGroups = w => {
     else if (item.heading) groupsOut.push({ heading: item.heading, srcs: [] });
     else add(item.src);
   }
-  return groupsOut.filter(g => g.srcs.length);
+  const out = groupsOut.filter(g => g.srcs.length);
+  if (LAYOUT[w.id]?.reverse) out.forEach(g => g.srcs.reverse());
+  return out;
 };
 
-// 표지는 작게, 나머지 사진은 한 장씩 세로로 쌓을 작업 (요청에 따라 따로 지정)
-const STACK = new Set(['maeum-login-34']);
+// 작업별 사진 배치 지정 (PDF 검토 주석에 따라)
+//  stack-cover: 표지는 칸 높이의 일정 비율로, 나머지는 한 장씩 세로로
+//  column: 모든 사진을 한 장씩 세로로
+//  equal-rows: 묶음 안 줄들의 가로 길이를 가장 짧은 줄에 맞춤
+//  match-rows: 묶음마다 한 줄씩, 모든 줄의 높이를 같게
+//  reverse: 사진 순서를 뒤집음
+const LAYOUT = {
+  'maeum-login-34': { mode: 'stack-cover', cover: 0.34 },
+  'the-meolli-ghost': { mode: 'column' },
+  'yeonhui-residency-2023': { mode: 'equal-rows' },
+  'digital-education-whitepaper-2023': { mode: 'match-rows' },
+  'dajaedapil-1': { reverse: true }
+};
 
 const workPage = (w, i) => {
   const cat = categories.find(c => c.id === w.category);
@@ -151,11 +166,11 @@ const workPage = (w, i) => {
     )
     .join('');
   return `
-<section class="page work"${STACK.has(w.id) ? ' data-stack="1"' : ''}>
+<section class="page work"${LAYOUT[w.id]?.mode ? ` data-mode="${LAYOUT[w.id].mode}" data-cover="${LAYOUT[w.id].cover || ''}"` : ''}>
   <header class="phead"><span class="kicker">Works · ${esc(cat.label)}</span><span class="count">${pad(w.number)} / ${pad(w.categoryTotal)}</span></header>
   <div class="work-body">
     <div class="wtext">
-      <h2 class="wtitle">${text(w.title)}</h2>
+      <h2 class="wtitle">${titleText(w.title)}</h2>
       <dl class="facts">${factsHtml}</dl>
       <div class="desc">${renderDesc(w)}</div>
     </div>
@@ -173,6 +188,7 @@ const css = `
 html,body{margin:0;padding:0}
 body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-adjust:exact;print-color-adjust:exact;word-break:keep-all;}
 .nowrap{white-space:nowrap}
+.tk{letter-spacing:-.06em}
 .page{position:relative;width:297mm;height:210mm;overflow:hidden;background:#f4efe4;page-break-after:always;break-after:page;padding:13mm 15mm 0}
 .page:last-child{page-break-after:auto;break-after:auto}
 .phead{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:3mm;border-bottom:.3mm solid rgba(31,31,31,.35);font-size:9.5pt;color:#6d6b66;letter-spacing:.02em}
@@ -228,12 +244,13 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 .excerpt{margin:.4em 0 .9em;padding-top:.7em;border-top:.25mm dashed rgba(31,31,31,.45);font-size:.88em}
 .excerpt h4{margin:0 0 .5em;font-weight:600;font-size:1em}
 .excerpt p{margin:0;line-height:1.62}
-/* 사진 묶음은 남는 칸의 가운데에 두고, 묶음 제목은 사진 왼쪽 끝에 맞춤 */
+/* 사진 묶음은 남는 칸의 가운데(가로·세로)에 두고, 묶음 제목은 그 묶음 사진의 왼쪽 끝에 맞춤 */
 .wphotos{flex:1 1 auto;min-width:0;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .pblock{max-width:100%}
 .pgroup h5{margin:0 0 1.4mm;font-size:8pt;font-weight:400;color:#6d6b66}
 .prow-src{display:none}
-.prow{display:flex;gap:2.2mm;margin-bottom:2.2mm;justify-content:flex-start}
+.prow{display:flex;gap:2.2mm;margin-bottom:2.2mm;justify-content:center}
+.pgroup{display:table;margin:0 auto}
 .pgroup:last-child .prow:last-child{margin-bottom:0}
 .prow img{display:block;height:100%;width:auto}
 .excerpt--side{position:absolute;left:0;right:0;bottom:0;margin:0;font-size:8.6pt;columns:2;column-gap:6mm}
@@ -301,8 +318,9 @@ const fitScript = `
     const CAP = H * (ph.querySelectorAll('img').length >= 6 ? 0.42 : 0.62); // 한 줄이 너무 높아지지 않게(세로 사진 한 장만 있는 줄 등)
     const options = groups.map(g => {
       const ars = g.imgs.map(x => x.ar), n = ars.length, out = [];
-      const maxMask = 1 << (n - 1);
-      for (let mask = 0; mask < maxMask; mask++) {
+      const mode = page.dataset.mode;
+      const masks = mode === 'column' ? [(1 << (n - 1)) - 1] : mode === 'match-rows' ? [0] : [...Array(1 << (n - 1)).keys()];
+      for (const mask of masks) {
         const rows = []; let cur = [0];
         for (let i = 1; i < n; i++) { if (mask & (1 << (i - 1))) { rows.push(cur); cur = [i]; } else cur.push(i); }
         rows.push(cur);
@@ -337,15 +355,30 @@ const fitScript = `
       for (const o of options[gi]) { chosenOpts.push(o); combine(gi + 1, chosenOpts); chosenOpts.pop(); }
     };
     combine(0, []);
-    if (page.dataset.stack) {
-      // 표지는 칸 높이의 1/4 정도로 작게, 나머지는 한 장씩 남은 높이를 나눠 크게
+    if (page.dataset.mode === 'stack-cover') {
+      // 표지는 칸 높이의 일정 비율로, 나머지는 한 장씩 남은 높이를 나눠 크게
       const imgs = groups.flatMap(g => g.imgs);
-      const coverH = Math.min(H * 0.25, W / imgs[0].ar);
+      const coverH = Math.min(H * parseFloat(page.dataset.cover || 0.25), W / imgs[0].ar);
       const restH = (H - coverH - GAP * (imgs.length - 1)) / (imgs.length - 1);
       const rows = imgs.map((it, k) => ({ row: [it], h: k === 0 ? coverH : Math.min(restH, W / it.ar) }));
       best = { opts: [], sc: 1, total: rows.reduce((a, r) => a + r.h, 0) + GAP * (rows.length - 1), stackRows: rows };
     }
     best.plan = best.stackRows ? [best.stackRows] : best.opts.map((o, gi) => o.rows.map(r => ({ row: r.idx.map(i => groups[gi].imgs[i]), h: r.h * best.sc })));
+    const rowW = r => r.row.reduce((a, it) => a + it.ar * r.h, 0) + GAP * (r.row.length - 1);
+    if (page.dataset.mode === 'equal-rows') {
+      best.plan.forEach(rows => {
+        const minW = Math.min(...rows.map(rowW));
+        rows.forEach(r => { const sum = r.row.reduce((a, it) => a + it.ar, 0); r.h = (minW - GAP * (r.row.length - 1)) / sum; });
+      });
+    }
+    if (page.dataset.mode === 'match-rows') {
+      // 모든 줄을 같은 높이로: 가장 낮은 줄 높이에 맞춘 뒤, 칸에 들어가도록 함께 키우거나 줄임
+      const rows = best.plan.flat();
+      const h0 = Math.min(...rows.map(r => (W - GAP * (r.row.length - 1)) / r.row.reduce((a, it) => a + it.ar, 0)));
+      const fixed = groups.reduce((a, g) => a + headH(g), 0) + GAP * (rows.length - 1);
+      const h = Math.min(h0, (H - fixed) / rows.length);
+      rows.forEach(r => { r.h = h; });
+    }
     groups.forEach((g, gi) => {
       const src = g.el.querySelector('.prow-src');
       best.plan[gi].forEach(r => {

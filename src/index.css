@@ -705,6 +705,11 @@ img {
   display: none;
 }
 
+/* '청년'의 '청' 뒤 간격 보정 (src/lib/titleText.jsx) */
+.tight-kern {
+  letter-spacing: -0.06em;
+}
+
 /* ---------- Work detail ---------- */
 
 /* 상세 페이지 제목: 칸 너비를 넘지 않게 재고 FitTitle이 크기를 맞춥니다 */

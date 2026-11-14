@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import ArrowIcon from '../components/ArrowIcon';
+import titleText from '../lib/titleText';
 import { categories, groups, orderedWorks } from '../data/works';
 
 export const pad = n => String(n).padStart(2, '0');
@@ -145,7 +146,7 @@ export default function Works() {
                             <li key={work.id}>
                               <button className={i === active ? 'is-active' : ''} onClick={() => jumpTo(i)}>
                                 <span className="num">{pad(work.number)}.</span>
-                                <span>{work.title}</span>
+                                <span>{titleText(work.title)}</span>
                               </button>
                             </li>
                           ) : null
@@ -199,7 +200,7 @@ export default function Works() {
                   <figcaption>
                     <span className="work-slide-title">
                       <span className="num">{pad(work.number)}.</span>
-                      <span>{work.title}</span>
+                      <span>{titleText(work.title)}</span>
                     </span>
                     <span className="work-slide-more">자세히 보기</span>
                   </figcaption>
