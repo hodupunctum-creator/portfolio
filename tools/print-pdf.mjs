@@ -45,7 +45,7 @@ const cover = `
   <div class="cover-intro"><span class="label">intro</span><p>${esc(site.bio)}</p></div>
   <h1 class="cover-title"><span>Not good enough,</span><span>but still writing</span></h1>
   <div class="cover-foot"><span>송다혜 · 이다유 포트폴리오</span></div>
-  <div class="cover-qr"><div class="qr-text"><span class="label">site</span><p>QR을 찍으면<br>포트폴리오 사이트로 이동합니다</p><p class="url">${esc(SITE_URL.replace(/^https:\/\//, '').replace(/\/$/, ''))}</p><p class="url">${esc(site.email)}</p></div><div class="qr">${QR_SVG}</div></div>
+  <div class="cover-qr"><div class="qr-text"><p>사이트에서 보기</p><p class="url">${esc(site.email)}</p></div><div class="qr">${QR_SVG}</div></div>
 </section>`;
 
 // ---------- About ----------
@@ -188,12 +188,12 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 .cover-title{position:absolute;left:14mm;bottom:30mm;margin:0;z-index:2;font-family:'Inter Tight','Inter',sans-serif;font-weight:800;font-size:23mm;line-height:.88;letter-spacing:-.045em;text-transform:uppercase;color:#33322d}
 .cover-title span{display:block}
 .cover-foot{position:absolute;left:15mm;right:15mm;bottom:10mm;display:flex;justify-content:space-between;font-size:9.5pt;z-index:2}
-.cover-qr{position:absolute;right:15mm;bottom:10mm;z-index:2;display:flex;align-items:flex-end;gap:5mm}
-.qr-text{text-align:right;font-size:8.5pt;line-height:1.5}
+.cover-qr{position:absolute;right:15mm;bottom:9mm;z-index:2;display:flex;align-items:flex-end;gap:3.5mm}
+.qr-text{text-align:right;font-size:8.5pt;line-height:1.5;padding-bottom:.6mm}
 .qr-text .label::before{margin-left:auto}
 .qr-text p{margin:0 0 1.2mm}
 .qr-text .url{color:#6d6b66;font-size:7.5pt;margin:0}
-.qr{width:27mm;height:27mm;padding:2.2mm;background:#fbf8f1;border-radius:1.5mm}
+.qr{width:18mm;height:18mm;padding:1.6mm;background:#fbf8f1;border-radius:1mm;box-shadow:0 0 0 .25mm rgba(31,31,31,.12)}
 
 /* About */
 .about-grid{display:grid;grid-template-columns:78mm 1fr;gap:14mm;margin-top:9mm;height:160mm}
