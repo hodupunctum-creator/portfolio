@@ -127,6 +127,9 @@ const photoGroups = w => {
   return groupsOut.filter(g => g.srcs.length);
 };
 
+// 사진을 모두 한 줄에 놓을 작업 (요청에 따라 따로 지정)
+const ONE_ROW = new Set(['maeum-login-34']);
+
 const workPage = (w, i) => {
   const cat = categories.find(c => c.id === w.category);
   const group = groups.find(g => g.id === cat.group);
@@ -148,7 +151,7 @@ const workPage = (w, i) => {
     )
     .join('');
   return `
-<section class="page work">
+<section class="page work"${ONE_ROW.has(w.id) ? ' data-one-row="1"' : ''}>
   <header class="phead"><span class="kicker">Works · ${esc(cat.label)}</span><span class="count">${pad(w.number)} / ${pad(w.categoryTotal)}</span></header>
   <div class="work-body">
     <div class="wtext">
@@ -228,6 +231,9 @@ body{font-family:Eulyoo,'Noto Serif KR',serif;color:#1f1f1f;-webkit-print-color-
 /* 사진 묶음은 남는 칸의 가운데에 두고, 묶음 제목은 사진 왼쪽 끝에 맞춤 */
 .wphotos{flex:1 1 auto;min-width:0;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .pblock{max-width:100%}
+/* 한 줄 배치 작업: 글 아래로 사진 줄이 페이지 폭 전체를 씀 */
+.page[data-one-row] .work-body{flex-direction:column;gap:7mm}
+.page[data-one-row] .wtext{flex:0 0 auto;width:33%}
 .pgroup h5{margin:0 0 1.4mm;font-size:8pt;font-weight:400;color:#6d6b66}
 .prow-src{display:none}
 .prow{display:flex;gap:2.2mm;margin-bottom:2.2mm;justify-content:flex-start}
@@ -296,7 +302,8 @@ const fitScript = `
     const CAP = H * (ph.querySelectorAll('img').length >= 6 ? 0.42 : 0.62); // 한 줄이 너무 높아지지 않게(세로 사진 한 장만 있는 줄 등)
     const options = groups.map(g => {
       const ars = g.imgs.map(x => x.ar), n = ars.length, out = [];
-      for (let mask = 0; mask < (1 << (n - 1)); mask++) {
+      const maxMask = page.dataset.oneRow ? 1 : (1 << (n - 1));
+      for (let mask = 0; mask < maxMask; mask++) {
         const rows = []; let cur = [0];
         for (let i = 1; i < n; i++) { if (mask & (1 << (i - 1))) { rows.push(cur); cur = [i]; } else cur.push(i); }
         rows.push(cur);
