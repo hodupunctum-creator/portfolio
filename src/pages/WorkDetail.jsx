@@ -31,8 +31,6 @@ export default function WorkDetail() {
   const next = works[(index + 1) % works.length];
   const facts = [
     ['구분', work.categoryLabel],
-    ['분류', work.tag],
-    ['소속', work.org],
     ['역할', work.role],
     ['성과', work.outcome]
   ].filter(([, value]) => value.length > 0);

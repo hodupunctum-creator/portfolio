@@ -133,8 +133,6 @@ const workPage = (w, i) => {
   const group = groups.find(g => g.id === cat.group);
   const facts = [
     ['구분', `${group.label} · ${cat.label}`],
-    ['분류', w.tag],
-    ['소속', w.org],
     ['역할', w.role],
     ['성과', w.outcome],
     ['링크', (w.links || []).map(l => `${l.label} — ${l.url.replace(/^https?:\/\//, '')}`)]
