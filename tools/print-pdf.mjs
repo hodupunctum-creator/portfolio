@@ -12,7 +12,7 @@ const { orderedWorks, categories, groups } = await import(path.join(REPO, 'src/d
 const { site } = await import(path.join(REPO, 'src/data/site.js'));
 
 const PUB = path.join(REPO, 'public');
-const SITE_URL = 'https://portfolio-blush-beta-xfi288olfi.vercel.app/';
+const SITE_URL = 'https://stillwrite.vercel.app/';
 // 사이트로 연결되는 QR (tools/qr.svg, reportlab로 생성)
 import { readFileSync } from 'node:fs';
 const QR_SVG = readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), 'qr.svg'), 'utf8')
